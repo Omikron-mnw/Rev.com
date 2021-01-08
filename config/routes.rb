@@ -9,10 +9,42 @@ Rails.application.routes.draw do
     passwords:     'devise/users/passwords',
     registrations: 'devise/users/registrations'
   }
-  
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
-  
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  #Admin側
+  namespace :admin do
+    #TopページをHomeに変更
+    get '/' => 'homes#top'
+
+    resources :comics
+    resources :categories, except: [:neww, :show, :destroy]
+    resources :users, only: [:index, :show]
+
+  end
+
+  #User側
+  scope module: :public do
+    #Topページ
+    root to: "homes#top"
+    #aboutページ
+    get 'homes/about' => 'homes#about'
+    #user周りのルート
+    resources :users, except: [:new, :create, :destroy]
+    get "users/:id/unsubscribe" => "uses#unsubsucribe", as: 'user_unsubsucribe'
+    patch "users/:id/withdraw" => "users#withdraw", as: 'user_withdraw'
+    #フォロー機能
+    resources :relationships, except: [:edit, :update, :show, :index]
+    #Comicの中にルーティングする必要はないかも？
+    resources :comics, only: [:index, :show]
+    resources :reviews do
+       resources :comments, except: [:edit, :update]
+       resources :likes, only: [:create, :destroy]
+    end
+    #Tag機能
+    resources :tags, only: [:new, :create, :destroy]
+    resources :tag_maps, only: [:create, :destroy]
+
+  end
 
 end
