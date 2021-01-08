@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 2021_01_08_045930) do
 
   create_table "comics", force: :cascade do |t|
     t.integer "category_id"
-    t.integer "comic_image_id"
+    t.string "comic_image_id"
     t.string "title"
+    t.string "author"
+    t.string "publisher"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -96,7 +98,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_045930) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.integer "profile_image_id"
+    t.string "profile_image_id"
     t.text "introduction"
     t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
