@@ -1,0 +1,40 @@
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-dark ma-auto">
+    <buttun class="navbar-toggler" type="buttun" data-toggle="collapse" data-target="#navbarVavDropdown" aria-controls="nabarNavDropdown" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </buttun>
+
+    <div class="collapse navbar-collapse bg-dark text-light" id="navbarNavDropdown">
+
+      <ul class="navbar-nav">
+
+        <!-- userがログイン時-->
+        <% if user_signed_in? %>
+        <p>LOGO</p>
+        <li>About</li>
+        <li>Mypage</li>
+        <li>Logout</li>
+
+        <!-- 管理人がログイン時 -->
+        <% elsif admin_signed_in? %>
+        <p>LOGO</p>
+        <li>About</li>
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+
+        <!-- どちらもログインしていない時 -->
+        <% else %>
+        <p>LOGO</p>
+        <li>About</li>
+        <li>新規登録</li>
+        <li>Login</li>
+
+        <% end %>
+
+      </ul>
+
+    </div>
+
+  </nav>
+</header>
