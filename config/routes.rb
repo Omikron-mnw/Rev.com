@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
 
     resources :comics
-    resources :categories, except: [:neww, :show, :destroy]
+    resources :categories, except: [:new, :show, :destroy]
     resources :users, only: [:index, :show]
 
   end
@@ -34,11 +34,11 @@ Rails.application.routes.draw do
     get "users/:id/unsubscribe" => "uses#unsubsucribe", as: 'user_unsubsucribe'
     patch "users/:id/withdraw" => "users#withdraw", as: 'user_withdraw'
     #フォロー機能
-    resources :relationships, except: [:edit, :update, :show, :index]
+    resources :relationships, except: [:new, :edit, :update, :show]
     #Comicの中にルーティングする必要はないかも？
     resources :comics, only: [:index, :show]
     resources :reviews do
-       resources :comments, except: [:edit, :update]
+       resources :comments, except: [:new, :edit, :update]
        resources :likes, only: [:create, :destroy]
     end
     #Tag機能
