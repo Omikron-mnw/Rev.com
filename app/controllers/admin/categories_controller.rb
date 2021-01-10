@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @category = Category.new
@@ -6,8 +7,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(category_params)
     @categories = Category.all
+    @category = Category.new(category_params)
     if @category.save
       flash[:notice] = "カテゴリーを追加しました"
       redirect_back(fallback_location: root_path)
@@ -28,7 +29,7 @@ class Admin::CategoriesController < ApplicationController
      @category = Category.find(params[:id])
      if @category.update(category_params)
        flash[:notice] = "カテゴリーを変更しました"
-       redirect_to admin_categories_path
+       redirect_to admin_categories_path(@category.id)
      else
        render :edit
      end

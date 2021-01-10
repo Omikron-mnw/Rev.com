@@ -17,7 +17,9 @@
 
         <!-- 管理人がログイン時 -->
         <% elsif admin_signed_in? %>
-        <p>LOGO</p>
+        <p>
+          <%= link_to "LOGO", admin_path %>
+        </p>
         <li>About</li>
         <li>
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

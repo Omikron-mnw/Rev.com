@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <h3>カテゴリー編集ページ</h3>
+      <table>
+        <%= form_with model: @category, url: admin_category_path(@category.id), local: true do |f| %>
+          <tr>
+            <td><%= f.label "カテゴリー名" %></td>
+            <td><%= f.text_field :name, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit "更新する", class: "btn btn-secondary" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
