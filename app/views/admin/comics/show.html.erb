@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <!--コミック画像-->
+    <div>
+      <%= attachment_image_tag @comic, :comic_image, size: "220x300", format: 'jpg', fallback: "no_image.jpg", class: "rounded mt-5" %>
+    </div>
+    <!--コミック詳細-->
+    <table>
+      <tr>
+        <!--タイトル-->
+        <td><%= @comic.title %></td>
+      </tr>
+      <tr>
+        <!--作者-->
+        <td><%= @comic.author %></td>
+      </tr>
+      <tr>
+        <!--出版社-->
+        <td><%= @comic.publisher %></td>
+      </tr>
+      <tr>
+        <!--カテゴリー-->
+        <td><%= @comic.category.name %></td>
+      </tr>
+    </table>
+    <!--ストーリー-->
+    <div>
+      <%= @comic.body %>
+    </div>
+    <!--編集ボタン-->
+    <div><%= link_to "編集する", edit_admin_comic_path(@comic.id), class: "btn btn-secondary" %></div>
+    <!--削除ボタン-->
+    <div><%= link_to "削除する", admin_comic_path(@comic.id), method: :delete, class: "btn btn-secondary" %></div>
+
+  </div>
+</div>

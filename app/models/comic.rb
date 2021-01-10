@@ -6,7 +6,7 @@ class Comic < ApplicationRecord
 
   attachment :comic_image
 
-  validates :title, presence: true, uniquness: true
+  validates :title, presence: true, uniqueness: true
   validates :author, presence: true
   validates :publisher, presence: true
   validates :body, presence: true
