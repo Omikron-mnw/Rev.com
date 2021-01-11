@@ -1,9 +1,9 @@
 class Public::RelationshipsController < ApplicationController
 
-  def index
+  def follow
   end
-
-  def show
+  
+  def follower
   end
 
   def create
