@@ -31,10 +31,12 @@ Rails.application.routes.draw do
     get 'homes/about' => 'homes#about'
     #user周りのルート
     resources :users, except: [:new, :create, :destroy]
-    get "users/:id/unsubscribe" => "uses#unsubsucribe", as: 'user_unsubsucribe'
+    get "users/:id/unsubscribe" => "users#unsubscribe", as: 'user_unsubscribe'
     patch "users/:id/withdraw" => "users#withdraw", as: 'user_withdraw'
     #フォロー機能
-    resources :relationships, except: [:new, :edit, :update, :show]
+    resources :relationships, only: [:create, :destroy]
+    get "relationships/follow" => "relationships#follow", as: 'relationships_follow'
+    get "relationships/follower" => "relationships#follower", as: 'registrations_follower'
     #Comicの中にルーティングする必要はないかも？
     resources :comics, only: [:index, :show]
     resources :reviews do

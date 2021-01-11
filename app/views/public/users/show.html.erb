@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="">
+      <div>
+        <%= attachment_image_tag @user, :profile_image, size: "200x200", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
+      </div>
+      <div>
+        <%= @user.name %>
+      </div>
+    </div>
+    <div class="">
+      <div>
+        <%= @user.introduction %>
+      </div>
+      <% if current_user.id == @user.id %>
+        <div>
+          <%= link_to edit_user_path do %>
+            <p>プロフィールを編集する</p>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "退会画面", user_unsubscribe_path(current_user.id), class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,12 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
+  #フォロー機能
   has_many :relationships, dependent: :destroy
+  has_many :followings, through: :relationships, class_name: 'Relationship',foreign_key: 'follow_id'
+  
+
+  attachment :profile_image
 
   validates :name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
