@@ -35,8 +35,8 @@ Rails.application.routes.draw do
     patch "users/:id/withdraw" => "users#withdraw", as: 'user_withdraw'
     #フォロー機能
     resources :relationships, only: [:create, :destroy]
-    get "relationships/follow" => "relationships#follow", as: 'relationships_follow'
-    get "relationships/follower" => "relationships#follower", as: 'registrations_follower'
+    get "relationships/follows" => "relationships#follow", as: 'relationships_follows'
+    get "relationships/followers" => "relationships#follower", as: 'relationships_followers'
     #Comicの中にルーティングする必要はないかも？
     resources :comics, only: [:index, :show]
     resources :reviews do
