@@ -1,0 +1,36 @@
+<div class ="container">
+  <div class="row">
+    <div>
+      <!--コミック一覧-->
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>タイトル</th>
+            <th>作者</th>
+            <th>出版社</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @comics.each do |comic| %>
+            <tr>
+              <td>
+                <%= link_to admin_comic_path(comic.id) do %>
+                  <%= attachment_image_tag comic, :comic_image, size: "44x60", format: 'jpg', fallback: "no_image.jpg" %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to admin_comic_path(comic.id) do %>
+                  <%= comic.title %>
+                <% end %>
+              </td>
+              <td><%= comic.author %></td>
+              <td><%= comic.publisher %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
