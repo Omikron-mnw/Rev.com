@@ -12,6 +12,18 @@
       <div>
         <%= @user.introduction %>
       </div>
+
+      <!--フォローボタン-->
+      <div>
+        <%= render 'public/relationships/follow_button', user: @user %>
+      </div>
+      <!--フォロー/フォロワー一覧-->
+      <div>
+        <div><%= link_to "フォロー: #{@user.followings.count} ", relationships_follows_path(id: @user.id) %></div>
+        <div><%= link_to "フォロワー: #{@user.followers.count} ", relationships_followers_path(id: @user.id) %></div>
+      </div>
+
+      <!--ログインユーザーのみに表示-->
       <% if current_user.id == @user.id %>
         <div>
           <%= link_to edit_user_path do %>
