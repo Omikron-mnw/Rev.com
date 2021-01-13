@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="">
+    <div>
+      <!--レビュー入力フォーム-->
+      <%= form_with model: @review, url: comic_reviews_path, method: :post, local: true do |f| %>
+
+        <!--コミックコードの送信-->
+        <p><%= f.hidden_field :comic_id, value: @comic.id %></p>
+
+        <!--評価-->
+        <div class="review-group row" id="star">
+          <p><%= f.label "評価" %></p>
+          <p><%= f.hidden_field :rate, id: :review_star %></p>
+        </div>
+
+        <!--評価javascript-->
+        <script>
+          $('#star').raty({
+            size:      36,
+            starOff:   "<%= asset_path('star-off.png') %>",
+            starOn:    "<%= asset_path('star-on.png') %>",
+            starHalf:  "<%= asset_path('star-half.png') %>",
+            scoreName: '@review[rate]',
+            half:      true,
+          });
+        </script>
+        
+        <!--レビュー内容-->
+        <div class="review-group row">
+          <p><%= f.label "レビュー" %></p>
+          <p><%= f.text_area :review, class: "form-control", rows: "4" %></p>
+        </div>
+
+        <!--確認ボタン-->
+        <div class="review-group row">
+          <p>
+            <%= f.submit "投稿する", class: "btn btn-success" %>
+          </p>
+        </div>
+
+      <% end %>
+      <!--/入力フォーム-->
+
+    </div>
+  </div>
+</div>

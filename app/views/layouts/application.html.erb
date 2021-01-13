@@ -16,8 +16,21 @@
   </head>
 
   <body>
+    <!--Header-->
     <%= render "layouts/header" %>
-    <p id="natice"><%= notice %></p>
+
+    <!--Flash Message-->
+    <% if flash[:notice] %>
+      <div class="notification text-info">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notification text-danger">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
     <main>
       <%= yield %>
 
