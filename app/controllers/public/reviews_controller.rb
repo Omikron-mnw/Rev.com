@@ -22,6 +22,7 @@ class Public::ReviewsController < ApplicationController
   def show
     @comic = Comic.find(params[:comic_id])
     @review = Review.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit

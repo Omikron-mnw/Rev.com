@@ -50,3 +50,34 @@
             <% end %>
           </div>
         </div>
+
+        <!--コメントの入力フォーム-->
+        <div class="new-comment">
+          <%= form_with model: @comment, url: comic_review_comments_path(review_id: @review.id), method: :post, local: true do |f| %>
+            <p><%= f.text_area :comment, rows: '5', placeholder: "コメント欄" %></p>
+            <p><%= f.submit "コメントする"%></p>
+          <% end %>
+        </div>
+
+        <!--コメント一覧-->
+        <div class="comments">
+          <p>
+            <i class="far fa-comment-alt"><%= @review.comments.count %></i>
+          </p>
+          <% @review.comments.each do |comment| %>
+            <p>
+              <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
+            </p>
+            <p><%= comment.user.name %></p>
+            <p>
+              <%= comment.comment %>
+              <%= comment.created_at.strftime('%Y/%m/%d') %>
+            </p>
+            <!--コメント削除ボタン-->
+            <% if comment.user == current_user %>
+              <p class="cpmment-delete">
+                <%= link_to "削除", comic_review_comment_path(comment,review_id: @review.id), method: :delete %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>

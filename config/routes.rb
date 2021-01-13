@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     #Comicの中にルーティングする必要はないかも？
     resources :comics, only: [:index, :show] do
       resources :reviews do
-         resources :comments, except: [:new, :edit, :update]
+         resources :comments, only: [:create, :destroy]
          resource :likes, only: [:create, :destroy]
       end
     end
