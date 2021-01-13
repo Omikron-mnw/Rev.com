@@ -55,7 +55,7 @@
             starHalf: '<%= asset_path('star-half.png') %>',
             half:     true,
             readOnly: true,
-            score:    "#{comic.reviews.average(:rate).to_f.round(1)}",
+            score:    <%= @comic.avg_rate.to_f.round(1) %>
           });
       </script>
 
@@ -65,7 +65,9 @@
     <!--レビュー一覧-->
     <% if @reviews.present? %>
       <% @reviews.each do |review| %>
-
+        <!--<%= link_to comic_review_path(@comic,review) do %>-->
+        <!--  <%= review.review %>-->
+        <!--<% end %>-->
         <div class="row reviews">
           <div class="col-md-2 reviews-user">
             <%= link_to review.user do %>
@@ -79,33 +81,32 @@
               <h4 class="mb-3">評価：<%= review.rate %>点</h4>
 
               <!--星評価-->
-             <div id="star-rate-<%= review.id %>"></div>
-              <script>
-                $('#star-rate-<%= review.id %>').raty({
-                  size:     36,
-                  starOff:  '<%= asset_path('star-off.png') %>',
-                  starOn :  '<%= asset_path('star-on.png') %>',
-                  starHalf: '<%= asset_path('star-half.png') %>',
-                  half:     true,
-                  readOnly: true,
-                  score:    <%= review.rate %>,
-                });
-              </script>
-            <!--/星評価-->
+              <div id="star-rate-<%= review.id %>"></div>
+                <script>
+                  $('#star-rate-<%= review.id %>').raty({
+                    size:     36,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn :  '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half:     true,
+                    readOnly: true,
+                    score:    <%= review.rate %>,
+                  });
+                </script>
+              <!--/星評価-->
 
-              <%= link_to comic_review_path(review.id) do %>
+              <%= link_to comic_review_path(@comic,review) do %>
                 <p><%= review.review %></p>
               <% end %>
-              <!--%= attachment_image_tag review.picture.url, class:'img-fluid' if review.picture? %>-->
             </div>
           </div>
           <div class="col-md-4">
-            <%= link_to review.comic do %>
+            
               <div class="reviews-comic">
                 <img src="<%= review.comic.comic_image_url %>" alt="">
                 <p><%=  review.comic.title %></p>
               </div>
-            <%end %>
+            
           </div>
 
           <div class="col-md-12 edit-button">

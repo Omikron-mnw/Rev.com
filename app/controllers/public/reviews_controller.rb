@@ -20,6 +20,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def show
+    @comic = Comic.find(params[:comic_id])
     @review = Review.find(params[:id])
   end
 

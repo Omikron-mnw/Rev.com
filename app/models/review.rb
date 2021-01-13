@@ -3,7 +3,11 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :comic
   has_many :comments, dependent: :destroy
+  # いいね機能
   has_many :likes, dependent: :destroy
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
 
   # バリデーション
   validates :comic_id, presence: true

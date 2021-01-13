@@ -35,7 +35,7 @@ class Public::RelationshipsController < ApplicationController
 
   private
   def set_user
-    @user = User.find_by(params[:follow_id])
+    @user = User.find_by(id: params[:follow_id])
   end
 
 end

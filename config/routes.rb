@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     resources :comics, only: [:index, :show] do
       resources :reviews do
          resources :comments, except: [:new, :edit, :update]
-         resources :likes, only: [:create, :destroy]
+         resource :likes, only: [:create, :destroy]
       end
     end
     #Tag機能
