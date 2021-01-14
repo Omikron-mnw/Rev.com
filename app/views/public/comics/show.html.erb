@@ -27,6 +27,17 @@
     <div>
       <%= @comic.body %>
     </div>
+    <!--タグリスト-->
+    <div class="tag-list">
+      <% @tag_list.each do |list| %>
+        <p><%= list.reviews.count %></p>
+        <p>
+          <%= link_to tags_path(tag_id: list.id) do %>
+            <%= list.tag_name %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
 
     <!--管理者の場合-->
     <% if admin_signed_in? %>
