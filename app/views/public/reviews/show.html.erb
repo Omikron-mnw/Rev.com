@@ -26,7 +26,22 @@
                 </script>
               <!--/星評価-->
 
+              <!--レビュー内容-->
               <p><%= @review.review %></p>
+
+              <!--タグ表示-->
+              <div>
+                <% @tags.each do |tag| %>
+                  <p>
+                    <i class="fas fa-tags"><%= tag.reviews.count %></i>
+                  </p>
+                  <p>
+                    <%= link_to tags_path(tag_id: tag.id) do %>
+                      <%= tag.tag_name %>
+                    <% end %>
+                  </p>
+                <% end %>
+              </div>
 
               <!--いいね機能-->
               <div>

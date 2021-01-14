@@ -8,8 +8,10 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    tag_list = params[:review][:tag_name].split(nil)
     if @review.save
-      redirect_to comic_reviews_path(@review.comic), notice: "レビューを追加しました"
+      @review.save_tag(tag_list)
+      redirect_to comic_path(@review.comic.id), notice: "レビューを追加しました"
     else
       @comic = Comic.find(params[:comic_id])
       render :new
@@ -17,12 +19,15 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
+    @tags = review.tags
+    @reviews = @comic.reviews
   end
 
   def show
     @comic = Comic.find(params[:comic_id])
     @review = Review.find(params[:id])
     @comment = Comment.new
+    @tags = @review.tags
   end
 
   def edit

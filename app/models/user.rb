@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :tags
 
   #フォロー機能
   has_many :relationships
