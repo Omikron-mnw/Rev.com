@@ -44,7 +44,7 @@ Rails.application.routes.draw do
          resource :likes, only: [:create, :destroy]
       end
     end
-    #Tag機能
+    #Tag機能<=Tag機能をreviewと紐づけているが、それで検索ができるのか？
     resources :tags, only: [:new, :create, :destroy] do
       get 'search_comics', to: 'review#search'
     end
