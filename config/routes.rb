@@ -45,7 +45,9 @@ Rails.application.routes.draw do
       end
     end
     #Tag機能
-    resources :tags, only: [:new, :create, :destroy]
+    resources :tags, only: [:new, :create, :destroy] do
+      get 'search_comics', to: 'review#search'
+    end
     resources :tag_maps, only: [:create, :destroy]
 
   end

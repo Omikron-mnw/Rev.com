@@ -51,6 +51,12 @@ class Public::ReviewsController < ApplicationController
     redirec_to comic_path(@comic.id), notice: "レビューを削除しました"
   end
 
+  def search
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:id])
+    @comics = @tag.review.comics
+  end
+
   private
   def review_params
     params.require(:review).permit(:comic_id, :user_id, :review, :rate)

@@ -36,7 +36,7 @@
                     <i class="fas fa-tags"><%= tag.reviews.count %></i>
                   </p>
                   <p>
-                    <%= link_to tags_path(tag_id: tag.id) do %>
+                    <%= link_to tag_search_comics_path(tag_id: tag.id) do %>
                       <%= tag.tag_name %>
                     <% end %>
                   </p>
