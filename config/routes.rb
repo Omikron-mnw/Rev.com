@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     end
     #Tag機能<=Tag機能をreviewと紐づけているが、それで検索ができるのか？
     resources :tags, only: [:new, :create, :destroy] do
-      get 'search_comics', to: 'review#search'
+      get 'search_comics', to: 'review#search_comic'
     end
     resources :tag_maps, only: [:create, :destroy]
 

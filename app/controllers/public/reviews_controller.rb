@@ -51,7 +51,7 @@ class Public::ReviewsController < ApplicationController
     redirec_to comic_path(@comic.id), notice: "レビューを削除しました"
   end
 
-  def search
+  def search_comic
     @tag_list = Tag.all
     @tag = Tag.find(params[:id])
     @comics = @tag.review.comics

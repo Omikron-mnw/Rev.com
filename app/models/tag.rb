@@ -9,7 +9,7 @@ class Tag < ApplicationRecord
   #       "comics.name = ?", name).references(:comics)
   #   }
 
-  scope :search_comic,->(name) {includes(tag: [review: [:comic]]).where("comics.name = ?", name).references(:comics)}
+  scope :search_comic,->(name) {includes(tag: [review: [:comic]]).where("comics.title = ?", name).references(:comics)}
 
 
 end
