@@ -75,16 +75,9 @@ ActiveRecord::Schema.define(version: 2021_01_08_045930) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tag_maps", force: :cascade do |t|
-    t.integer "review_id"
-    t.integer "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_tag_maps_on_review_id"
-    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
-  end
-
   create_table "tags", force: :cascade do |t|
+    t.integer "comic_id"
+    t.integer "user_id"
     t.string "tag_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

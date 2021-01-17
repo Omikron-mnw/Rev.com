@@ -2,15 +2,16 @@ class Public::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @tag = Tag.new
     @comic = Comic.find(params[:comic_id])
   end
 
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    tag_list = params[:review][:tag_name].split(nil)
+    tag_list = params[:review][:tag_name].split(",")
     if @review.save
-      @review.save_tag(tag_list)
+      @review.tag_save(tag_list)
       redirect_to comic_path(@review.comic.id), notice: "レビューを追加しました"
     else
       @comic = Comic.find(params[:comic_id])
@@ -27,7 +28,6 @@ class Public::ReviewsController < ApplicationController
     @comic = Comic.find(params[:comic_id])
     @review = Review.find(params[:id])
     @comment = Comment.new
-    @tags = @review.tags
   end
 
   def edit
@@ -51,15 +51,21 @@ class Public::ReviewsController < ApplicationController
     redirec_to comic_path(@comic.id), notice: "レビューを削除しました"
   end
 
-  def search_comic
-    @tag_list = Tag.all
-    @tag = Tag.find(params[:id])
-    @comics = @tag.review.comics
-  end
+  # def search_comic
+  #   @tag_list = Tag.all
+  #   @tag = Tag.find(params[:id])
+  #   @comics = @tag.review.comics
+  # end
 
   private
   def review_params
-    params.require(:review).permit(:comic_id, :user_id, :review, :rate)
+    params
+      .require(:review)
+      .permit(:comic_id, :user_id, :review, 
+        :rate, tag_attributes: [:coimc_id, :user_id, :tag_name])
   end
+  # def tag_list
+  #   params.require(:tag).permit(:comic_id, :user_id, :tag_name)
+  # end
 
 end

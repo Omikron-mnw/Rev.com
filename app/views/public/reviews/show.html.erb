@@ -30,18 +30,18 @@
               <p><%= @review.review %></p>
 
               <!--タグ表示-->
-              <div>
-                <% @tags.each do |tag| %>
-                  <p>
-                    <i class="fas fa-tags"><%= tag.reviews.count %></i>
-                  </p>
-                  <p>
-                    <%= link_to tag_search_comics_path(tag_id: tag.id) do %>
-                      <%= tag.tag_name %>
-                    <% end %>
-                  </p>
-                <% end %>
-              </div>
+              <!--<div>-->
+              <!--  % @tags.each do |tag| %>-->
+              <!--    <p>-->
+              <!--      <i class="fas fa-tags">%= tag.comics.count %></i>-->
+              <!--    </p>-->
+              <!--    <p>-->
+              <!--      %= link_to comic_tag_search_path(tag_id: tag.id) do %>-->
+              <!--        %= tag.tag_name %>-->
+              <!--      % end %>-->
+              <!--    </p>-->
+              <!--  % end %>-->
+              <!--</div>-->
 
               <!--いいね機能-->
               <div>
