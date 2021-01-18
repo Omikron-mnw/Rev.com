@@ -79,6 +79,8 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'kaminari'
 
+gem 'rakuten_web_service'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

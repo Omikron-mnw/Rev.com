@@ -4,6 +4,7 @@ class Comic < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :tags, dependent: :destroy
 
+
   attachment :comic_image
 
   validates :title, presence: true, uniqueness: true

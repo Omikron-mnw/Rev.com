@@ -45,11 +45,11 @@ Rails.application.routes.draw do
          resource :likes, only: [:create, :destroy]
       end
       #Tag機能
-      resources :tags, only: [:new, :create, :destroy] do
+      resources :tags, only: [:create, :destroy] do
         get 'search', to: 'tag#search'
       end
     end
-    
+
 
   end
 

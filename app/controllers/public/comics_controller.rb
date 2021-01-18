@@ -8,6 +8,7 @@ class Public::ComicsController < ApplicationController
     @comic = Comic.find(params[:id])
     @reviews = @comic.reviews
     @tag = Tag.new
+    @tags = @comic.tags
   end
 
 end
