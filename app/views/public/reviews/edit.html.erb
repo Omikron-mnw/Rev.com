@@ -4,9 +4,6 @@
       <!--レビュー編集フォーム-->
       <%= form_with model: @review, url: comic_review_path(@review.id), method: :patch, local: true do |f| %>
 
-        <!--コミックコードの送信-->
-        <p><%= f.hidden_field :comic_id, value: @comic.id %></p>
-
         <!--評価-->
         <div class="review-group row" id="star">
           <p><%= f.label "評価" %></p>
