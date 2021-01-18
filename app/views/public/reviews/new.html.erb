@@ -24,16 +24,11 @@
             half:      true,
           });
         </script>
-        
+
         <!--レビュー内容-->
         <div class="review-group row">
           <p><%= f.label "レビュー" %></p>
           <p><%= f.text_area :review, class: "form-control", rows: "4" %></p>
-        </div>
-        
-        <!--タグ入力フォーム-->
-        <div class="review-group row">
-          <%= f.text_field :tag_name, class: "form-control" %>
         </div>
 
         <!--確認ボタン-->

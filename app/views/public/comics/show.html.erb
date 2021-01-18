@@ -28,16 +28,22 @@
       <%= @comic.body %>
     </div>
     <!--タグリスト-->
-    <div class="tag-list">
-      <% @tag_list.each do |list| %>
-        <p><%= list.reviews.count %></p>
-        <p>
-          <%= link_to tags_path(tag_id: list.id) do %>
-            <%= list.tag_name %>
-          <% end %>
-        </p>
-      <% end %>
-    </div>
+    <!--<div class="tag-list">-->
+    <!--  % @tags.each do |tag| %>-->
+    <!--    <p>%= tag.comics.count %></p>-->
+    <!--    <p>-->
+    <!--      %= link_to tags_path(tag_id: tag.id) do %>-->
+    <!--        %= tag.tag_name %>-->
+    <!--      % end %>-->
+    <!--    </p>-->
+    <!--  % end %>-->
+    <!--</div>-->
+    <!--タグ入力フォーム-->
+    <!--<div class="review-group row">-->
+    <!--  %= f.fields_for @tag do |t| %>-->
+    <!--    %= t.text_field :tag_name, class: "form-control" %>-->
+    <!--  % end %>-->
+    <!--</div>-->
 
     <!--管理者の場合-->
     <% if admin_signed_in? %>
@@ -130,8 +136,8 @@
 
           <div class="col-md-12 edit-button">
             <% if current_user == review.user %>
-              <%= link_to '編集', edit_comic_review_path(review), method: :get, class:'btn btn-default' %>
-              <%= link_to '削除', comic_review_path(review), method: :delete, class:'btn btn-default' %>
+              <%= link_to '編集', edit_comic_review_path(@comic,review), method: :get, class:'btn btn-default' %>
+              <%= link_to '削除', comic_review_path(@comic,review), method: :delete, class:'btn btn-default' %>
             <% end %>
           </div>
         </div>

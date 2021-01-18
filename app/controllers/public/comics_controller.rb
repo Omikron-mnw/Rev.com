@@ -6,9 +6,8 @@ class Public::ComicsController < ApplicationController
 
   def show
     @comic = Comic.find(params[:id])
-    @review = Review.find(params[:id])
     @reviews = @comic.reviews
-    @tag_list = @review.tags
+    @tag = Tag.new
   end
 
 end

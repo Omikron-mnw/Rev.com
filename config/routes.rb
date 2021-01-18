@@ -37,16 +37,19 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     get "relationships/follows" => "relationships#follow", as: 'relationships_follows'
     get "relationships/followers" => "relationships#follower", as: 'relationships_followers'
-    #Comicの中にルーティングする必要はないかも？
+    #Comic関連のルーティング
     resources :comics, only: [:index, :show] do
+      #レビュー機能
       resources :reviews do
          resources :comments, only: [:create, :destroy]
          resource :likes, only: [:create, :destroy]
       end
+      #Tag機能
+      resources :tags, only: [:new, :create, :destroy] do
+        get 'search', to: 'tag#search'
+      end
     end
-    #Tag機能
-    resources :tags, only: [:new, :create, :destroy]
-    resources :tag_maps, only: [:create, :destroy]
+    
 
   end
 
