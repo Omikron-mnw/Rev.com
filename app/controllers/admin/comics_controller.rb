@@ -45,6 +45,12 @@ class Admin::ComicsController < ApplicationController
     redirect_to admin_comics_path, notice: "削除しました"
   end
 
+  def search
+    if params[:keyword]
+      @comics = RakutenWebService::Books::.sarch(keyword: params[:keyword])
+    end
+  end
+
   private
   def comic_params
     params.require(:comic).permit(

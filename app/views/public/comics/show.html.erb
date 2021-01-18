@@ -28,22 +28,32 @@
       <%= @comic.body %>
     </div>
     <!--タグリスト-->
-    <!--<div class="tag-list">-->
-    <!--  % @tags.each do |tag| %>-->
-    <!--    <p>%= tag.comics.count %></p>-->
-    <!--    <p>-->
-    <!--      %= link_to tags_path(tag_id: tag.id) do %>-->
-    <!--        %= tag.tag_name %>-->
-    <!--      % end %>-->
-    <!--    </p>-->
-    <!--  % end %>-->
-    <!--</div>-->
+    <div class="tag-list">
+      <p><%= @comic.tags.count %></p>
+      <% @tags.each do |tag| %>
+        <p>
+          <!--%= link_to tags_path(tag_id: tag.id) do %>-->
+            #<%= tag.tag_name %>
+          <!--% end %>-->
+        </p>
+        <p>
+          <% if tag.user == current_user %>
+            <%= link_to  comic_tag_path(tag,comic_id: @comic.id), method: :delete do %>
+              <i class="fas fa-backspace"></i>
+            <% end %>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+
     <!--タグ入力フォーム-->
-    <!--<div class="review-group row">-->
-    <!--  %= f.fields_for @tag do |t| %>-->
-    <!--    %= t.text_field :tag_name, class: "form-control" %>-->
-    <!--  % end %>-->
-    <!--</div>-->
+    <div>
+      <%= form_with model: @tag, url: comic_tags_path(comic_id: @comic.id), method: :post, local: true do |f| %>
+        <%= f.label "タグ追加" %>
+        <%= f.text_field :tag_name, rows: '4', placeholder: "タグをここに" %>
+        <%= f.submit "追加" %>
+      <% end %>
+    </div>
 
     <!--管理者の場合-->
     <% if admin_signed_in? %>
