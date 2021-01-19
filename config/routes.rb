@@ -17,7 +17,12 @@ Rails.application.routes.draw do
     #TopページをHomeに変更
     get '/' => 'homes#top'
 
-    resources :comics
+    resources :comics, except: [:new] do
+      collection do
+        get :search
+      end
+    end
+
     resources :categories, except: [:new, :show, :destroy]
     resources :users, only: [:index, :show]
 
@@ -49,8 +54,6 @@ Rails.application.routes.draw do
         get 'search', to: 'tag#search'
       end
     end
-
-
   end
 
 end

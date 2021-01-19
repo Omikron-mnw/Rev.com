@@ -2,7 +2,7 @@
   <div class="row">
     <!--コミック画像-->
     <div>
-      <%= attachment_image_tag @comic, :comic_image, size: "220x300", format: 'jpg', fallback: "no_image.jpg", class: "rounded mt-5" %>
+      <%= image_tag @comic.image_url, size: "220x300", format: 'jpg', fallback: "no_image.jpg", class: "rounded mt-5" %>
     </div>
     <!--コミック詳細-->
     <table>

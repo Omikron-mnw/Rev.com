@@ -30,13 +30,14 @@ ActiveRecord::Schema.define(version: 2021_01_08_045930) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "comics", force: :cascade do |t|
+  create_table "comics", primary_key: "isbn", force: :cascade do |t|
     t.integer "category_id"
-    t.string "comic_image_id"
+    t.string "image_url"
+    t.string "url"
     t.string "title"
     t.string "author"
     t.string "publisher"
-    t.text "body"
+    t.text "item_caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

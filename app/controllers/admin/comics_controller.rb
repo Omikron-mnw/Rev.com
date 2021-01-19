@@ -1,18 +1,35 @@
 class Admin::ComicsController < ApplicationController
   before_action :authenticate_admin!
 
-  def new
-    @comic = Comic.new
+  def search
     @categories = Category.all
+    #からの配列を作る
+    @comics = []
+    @title = params[:title]
+    if @title.present?
+      #ここでresultsに楽天APIから取得したデータを格納する
+      results = RakutenWebService::Books::Book.search({
+        title: @title,
+      })
+      #ここで@comicsにAPIから取得したJSONデータを格納する
+      results.each do |result|
+        comic = Comic.new(read(result))
+        @comics << comic
+      end
+    end
   end
 
   def create
-    @comic = Comic.new(comic_params)
-    if @comic.save!
+    comic = Comic.find_or_initialize_by(isbn: params[:isbn])
+    #@comics内の各データをそれぞれ保存する/すでに保存済のものは除外？
+    unless comic.persisted?
+      results = RakutenWebService::Books::Book.search(isbn: comic.isbn)
+      comic = Comic.new(comic_params)
+      binding.pry
+      comic.save
       redirect_to admin_comics_path, notice: "コミックを追加しました"
     else
-      @categories = Category.all
-      render :new
+      render :search
     end
   end
 
@@ -21,16 +38,16 @@ class Admin::ComicsController < ApplicationController
   end
 
   def show
-    @comic = Comic.find(params[:id])
+    @comic = Comic.find_by(isbn: params[:isbn])
   end
 
   def edit
-    @comic = Comic.find(params[:id])
+    @comic = Comic.find_by(isbn: params[:isbn])
     @categories = Category.all
   end
 
   def update
-    @comic = Comic.find(params[:id])
+    @comic = Comic.find_by(isbn: params[:isbn])
     if @comic.update!(comic_params)
       redirect_to admin_comic_path(@comic.id), notice: "更新しました"
     else
@@ -40,27 +57,42 @@ class Admin::ComicsController < ApplicationController
   end
 
   def destroy
-    @comic = Comic.find(params[:id])
+    @comic = Comic.find_by(isbn: params[:isbn])
     @comic.destroy
     redirect_to admin_comics_path, notice: "削除しました"
-  end
-
-  def search
-    if params[:keyword]
-      @comics = RakutenWebService::Books::.sarch(keyword: params[:keyword])
-    end
   end
 
   private
   def comic_params
     params.require(:comic).permit(
       :category_id,
-      :comic_image,
+      :body,
       :title,
       :author,
       :publisher,
-      :body
-    )
+      :url,
+      :isbn,
+      :image_url,
+      :item_caption
+      )
+  end
+  def read(result)
+    title = result["title"]
+    author = result["author"]
+    publisher = result["publisherName"]
+    url = result["itemUrl"]
+    isbn = result["isbn"]
+    image_url = result["mediumImageUrl"].gsub('?_ex=120x120', '')
+    item_caption = result["itemCaption"]
+    {
+      title: title,
+      author: author,
+      publisher: publisher,
+      url: url,
+      isbn: isbn,
+      image_url: image_url,
+      item_caption: item_caption
+    }
   end
 
 end
