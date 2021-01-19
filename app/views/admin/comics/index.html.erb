@@ -3,7 +3,7 @@
     <div>
       <!--新規登録-->
       <div>
-        <%= link_to "コミック新規登録", new_admin_comic_path %>
+        <%= link_to "コミック新規登録", search_admin_comics_path %>
       </div>
 
       <!--コミック一覧-->
@@ -20,12 +20,12 @@
           <% @comics.each do |comic| %>
             <tr>
               <td>
-                <%= link_to admin_comic_path(comic.id) do %>
-                  <%= attachment_image_tag comic, :comic_image, size: "44x60", format: 'jpg', fallback: "no_image.jpg" %>
+                <%= link_to admin_comic_path(comic.isbn) do %>
+                  <%= image_tag comic.image_url, size: "44x60" %>
                 <% end %>
               </td>
               <td>
-                <%= link_to admin_comic_path(comic.id) do %>
+                <%= link_to admin_comic_path(comic.isbn) do %>
                   <%= comic.title %>
                 <% end %>
               </td>

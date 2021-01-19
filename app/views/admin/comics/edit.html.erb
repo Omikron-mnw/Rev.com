@@ -8,7 +8,7 @@
         <%= form_with model: @comic, url: admin_comic_path, method: :patch, local: true do |f| %>
           <tr>
             <td><%= f.label "コミックイメージ" %></td>
-            <td><%= f.attachment_field :comic_image, size: "220x300" %></td>
+            <td><%= f.image :image_url, size: "220x300" %></td>
           </tr>
           <tr>
             <td><%= f.label "コミックタイトル" %></td>

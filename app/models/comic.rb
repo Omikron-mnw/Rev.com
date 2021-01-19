@@ -1,16 +1,14 @@
 class Comic < ApplicationRecord
 
+  self.primary_key = "isbn" #<== API使用のため
   belongs_to :category
   has_many :reviews, dependent: :destroy
   has_many :tags, dependent: :destroy
 
-
-  attachment :comic_image
-
+  # バリデーション
   validates :title, presence: true, uniqueness: true
   validates :author, presence: true
   validates :publisher, presence: true
-  validates :body, presence: true
 
   # レビュー平均
   def avg_rate

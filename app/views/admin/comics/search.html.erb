@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+    <!--検索フォーム-->
+    <div>
+      <%= form_tag(search_admin_comics_path, method: :get) do %>
+        <%= text_field_tag :title, @title %>
+        <%= submit_tag "検索" %>
+      <% end %>
+    </div>
+
+    <!--検索結果表示-->
+    <div>
+      <% if @comics %>
+        <% @comics.each do |comic| %>
+          <!--コミックイメージ-->
+          <p><%= image_tag comic.image_url, size: "220x300" %></p>
+          <!--コミックタイトル-->
+          <p><%= comic.title %></p>
+          <!--作者-->
+          <p><%= comic.author %></p>
+          <!--出版社-->
+          <p><%= comic.publisher %></p>
+          <!--あらすじ-->
+          <p><%= comic.item_caption %></p>
+          <!--保存-->
+          <div>
+            <%= form_with model: comic, url: admin_comics_path, method: :post, local: true  do |f| %>
+              <p><%= f.hidden_field :isbn, :value => comic.isbn %></p>
+              <p><%= f.hidden_field :url, :value => comic.url %></p>
+              <p><%= f.hidden_field :image_url, :value => comic.image_url %></p>
+              <p><%= f.hidden_field :title, :value => comic.title %></p>
+              <p><%= f.hidden_field :author, :value => comic.author %></p>
+              <p><%= f.hidden_field :publisher, :value => comic.publisher %></p>
+              <p><%= f.hidden_field :item_caption, :value => comic.item_caption %></p>
+              <td><%= f.label "カテゴリー" %></td>
+              <td><%= f.collection_select(:category_id, Category.all, :id, :name, prompt: "--選択してください--") %></td>
+              <p><%= f.submit 'データを保存する' %></p>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
