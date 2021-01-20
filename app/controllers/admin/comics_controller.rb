@@ -25,7 +25,6 @@ class Admin::ComicsController < ApplicationController
     unless comic.persisted?
       results = RakutenWebService::Books::Book.search(isbn: comic.isbn)
       comic = Comic.new(comic_params)
-      binding.pry
       comic.save
       redirect_to admin_comics_path, notice: "コミックを追加しました"
     else
@@ -49,7 +48,7 @@ class Admin::ComicsController < ApplicationController
   def update
     @comic = Comic.find_by(isbn: params[:isbn])
     if @comic.update!(comic_params)
-      redirect_to admin_comic_path(@comic.id), notice: "更新しました"
+      redirect_to admin_comic_path(@comic.isbn), notice: "更新しました"
     else
       @categories = Category.all
       render :edit

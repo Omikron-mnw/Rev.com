@@ -5,7 +5,7 @@ class Public::ComicsController < ApplicationController
   end
 
   def show
-    @comic = Comic.find(params[:id])
+    @comic = Comic.find_by(isbn: params[:isbn])
     @reviews = @comic.reviews
     @tag = Tag.new
     @tags = @comic.tags

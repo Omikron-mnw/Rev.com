@@ -1,19 +1,28 @@
 <div class="container">
   <div class="row">
-    <div>
-      <h3>カテゴリー編集ページ</h3>
-      <table>
-        <%= form_with model: @category, url: admin_category_path(@category.id), local: true do |f| %>
-          <tr>
-            <td><%= f.label "カテゴリー名" %></td>
-            <td><%= f.text_field :name, class: "form-control" %></td>
+    <div class="col-lg-10">
+      <h4 class="text-center">カテゴリー編集</h4>
+
+      <!--編集フォーム-->
+      <%= form_with model: @category, url: admin_category_path(@category.id), local: true do |f| %>
+        <table class="table">
+          <tr class="category-table-box">
+            <th><%= f.label "カテゴリー名" %></th>
+            <td><%= f.text_field :name, class: "form-control", :size => "70x2" %></td>
           </tr>
-          <tr>
-            <td></td>
-            <td><%= f.submit "更新する", class: "btn btn-secondary" %></td>
-          </tr>
-        <% end %>
-      </table>
+        </table>
+        <div class="text-center">
+          <%= f.submit "更新する", class: "btn btn-outline-secondary btn-lg" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-10 text-center">
+      <%= link_to admin_categories_path do %>
+        <p class="category-path">カテゴリー登録  /  一覧</p>
+      <% end %>
     </div>
   </div>
 </div>

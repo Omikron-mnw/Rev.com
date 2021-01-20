@@ -17,11 +17,12 @@ Rails.application.routes.draw do
     #TopページをHomeに変更
     get '/' => 'homes#top'
 
-    resources :comics, except: [:new] do
-      collection do
-        get :search
-      end
-    end
+    get "comics/:isbn" => "comics#show", as: 'comic'
+    get "comics/:isbn/edit" => "comics#edit", as: 'comic_edit'
+    patch "comics/:isbn" => "comics#update", as: 'comic_update'
+    delete "comics/:isbn/destroy" => "comics#destroy", as: 'comic_destroy'
+    get "search/comics" => "comics#search", as: 'comics_search'
+    resources :comics, only: [:index, :create]
 
     resources :categories, except: [:new, :show, :destroy]
     resources :users, only: [:index, :show]
@@ -43,7 +44,8 @@ Rails.application.routes.draw do
     get "relationships/follows" => "relationships#follow", as: 'relationships_follows'
     get "relationships/followers" => "relationships#follower", as: 'relationships_followers'
     #Comic関連のルーティング
-    resources :comics, only: [:index, :show] do
+    get "comics/:isbn" => "comics#show", as: 'comic'
+    resources :comics, only: [:index] do
       #レビュー機能
       resources :reviews do
          resources :comments, only: [:create, :destroy]

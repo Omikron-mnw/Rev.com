@@ -1,10 +1,10 @@
 <header class="header">
-  <nav class="navbar navbar-expand-lg navbar-dark ma-auto">
+  <nav class="navbar navbar-expand-lg ">
     <buttun class="navbar-toggler" type="buttun" data-toggle="collapse" data-target="#navbarVavDropdown" aria-controls="nabarNavDropdown" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </buttun>
 
-    <div class="collapse navbar-collapse bg-dark text-light" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse text-light" id="navbarNavDropdown">
 
       <ul class="navbar-nav">
 
@@ -12,22 +12,22 @@
         <% if user_signed_in? %>
         <p>
           <%= link_to root_path do %>
-            <p>LOGO</p>
+            <p class="head-logo">LOGO</p>
           <% end %>
         </p>
         <li>
           <%= link_to homes_about_path do %>
-            <p>About</p>
+            <p class="user-head-path">About</p>
           <% end %>
         </li>
         <li>
           <%= link_to user_path(current_user) do %>
-            Mypage
+            <p class="user-head-path">Mypage</p>
           <% end %>
         </li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
-            Logout
+            <p class="user-head-path">Logout</p>
           <% end %>
         </li>
 
@@ -35,38 +35,50 @@
         <% elsif admin_signed_in? %>
         <p>
           <%= link_to admin_path do %>
-            <p>LOGO</p>
+            <p class="head-logo">LOGO</p>
           <% end %>
         </p>
         <li>
-          <%= link_to homes_about_path do %>
-            <p>About</p>
+          <%= link_to admin_comics_search_path do %>
+            <p class="admin-head-path">コミック新規登録</p>
           <% end %>
         </li>
         <li>
-          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          <%= link_to admin_comics_path do %>
+            <p class="admin-head-path">コミック一覧</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_categories_path do %>
+            <p class="admin-head-path">カテゴリー登録/一覧</p>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_admin_session_path, method: :delete do %>
+            <p class="admin-head-path">ログアウト</p>
+          <% end %>
         </li>
 
         <!-- どちらもログインしていない時 -->
         <% else %>
         <p>
           <%= link_to root_path do %>
-            <p>LOGO</p>
+            <p class="head-logo">LOGO</p>
           <% end %>
         </p>
         <li>
           <%= link_to homes_about_path do %>
-            <p>About</p>
+            <p class="default-head-path">About</p>
           <% end %>
         </li>
         <li>
           <%= link_to new_user_registration_path do %>
-            <p>新規登録</p>
+            <p class="default-head-path">新規登録</p>
           <% end %>
         </li>
         <li>
           <%= link_to new_user_session_path do %>
-           <p>LOGIN</p>
+           <p class="default-head-path">LOGIN</p>
           <% end %>
         </li>
 
