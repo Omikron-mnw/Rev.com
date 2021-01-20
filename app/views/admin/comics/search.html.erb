@@ -2,15 +2,15 @@
   <div class="row">
 
     <!--検索フォーム-->
-    <div>
-      <%= form_tag(search_admin_comics_path, method: :get) do %>
-        <%= text_field_tag :title, @title %>
-        <%= submit_tag "検索" %>
+    <div class="col-lg-5">
+      <%= form_tag(admin_comics_search_path, method: :get) do %>
+        <p class="form-box"><%= text_field_tag :title, @title, :size => "50x2" %></p>
+        <p class="form-btn"><%= submit_tag "検索", class: "btn btn-outline-secondary btn-lg" %></p>
       <% end %>
     </div>
 
     <!--検索結果表示-->
-    <div>
+    <div class="col-lg-7 search-index">
       <% if @comics %>
         <% @comics.each do |comic| %>
           <!--コミックイメージ-->
@@ -33,9 +33,9 @@
               <p><%= f.hidden_field :author, :value => comic.author %></p>
               <p><%= f.hidden_field :publisher, :value => comic.publisher %></p>
               <p><%= f.hidden_field :item_caption, :value => comic.item_caption %></p>
-              <td><%= f.label "カテゴリー" %></td>
-              <td><%= f.collection_select(:category_id, Category.all, :id, :name, prompt: "--選択してください--") %></td>
-              <p><%= f.submit 'データを保存する' %></p>
+              <p><%= f.label "カテゴリー" %></p>
+              <p><%= f.collection_select(:category_id, Category.all, :id, :name, prompt: "--選択してください--") %></>
+              <p class="result-btn"><%= f.submit 'データを保存する', class: "btn btn-outline-secondary btn-sm" %></p>
             <% end %>
           </div>
         <% end %>

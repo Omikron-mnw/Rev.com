@@ -1,36 +1,59 @@
-<div class="container">
+<div class="container-fluid comic-page-box">
   <div class="row">
     <!--コミック画像-->
-    <div>
-      <%= image_tag @comic.image_url, size: "220x300", format: 'jpg', fallback: "no_image.jpg", class: "rounded mt-5" %>
+    <div class="col-lg-4">
+      <%= image_tag @comic.image_url, size: "370x500" %>
     </div>
-    <!--コミック詳細-->
-    <table>
-      <tr>
-        <!--タイトル-->
-        <td><%= @comic.title %></td>
-      </tr>
-      <tr>
-        <!--作者-->
-        <td><%= @comic.author %></td>
-      </tr>
-      <tr>
-        <!--出版社-->
-        <td><%= @comic.publisher %></td>
-      </tr>
-      <tr>
-        <!--カテゴリー-->
-        <td><%= @comic.category.name %></td>
-      </tr>
-    </table>
-    <!--ストーリー-->
-    <div>
-      <%= @comic.body %>
-    </div>
-    <!--編集ボタン-->
-    <div><%= link_to "編集する", edit_admin_comic_path(@comic.id), class: "btn btn-secondary" %></div>
-    <!--削除ボタン-->
-    <div><%= link_to "削除する", admin_comic_path(@comic.id), method: :delete, class: "btn btn-secondary" %></div>
 
+    <!--コミック詳細-->
+    <div class="col-lg-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="120px"></th>
+            <th>コミック情報</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>タイトル</td>
+            <td><%= @comic.title %></td>
+          </tr>
+          <tr>
+            <td>作者</td>
+            <td><%= @comic.author %></td>
+          </tr>
+          <tr>
+            <td>出版社</td>
+            <td><%= @comic.publisher %></td>
+          </tr>
+          <tr>
+            <td>カテゴリー</td>
+            <td><%= @comic.category.name %></td>
+          </tr>
+          <tr>
+            <td>ストーリー</td>
+            <td>
+              <%= @comic.item_caption %>
+            </td>
+          </tr>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td>
+              <!--編集ボタン-->
+              <p class="comic-btn">
+                <%= link_to "編集する", admin_comic_edit_path(@comic.isbn), class: "btn btn-outline-secondary btn-lg" %>
+              </p>
+              <!--削除ボタン-->
+              <p class="comic-btn">
+                <%= link_to "削除する", admin_comic_destroy_path(@comic.isbn), method: :delete, class: "btn btn-outline-danger btn-lg" %>
+              </p>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+
+    </div>
   </div>
 </div>

@@ -24,8 +24,66 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  width: 100%;
+  background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%); //グラデーション
 }
 
 .notification:not(:last-child){
   margin-bottom: 0;
+}
+
+header {
+  // position: fixed; //上部に固定
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 20px 0 20px;
+  background-color: #444444;
+  // border-bottom-left-radius: 50% 20%;
+  // border-bottom-right-radius: 50% 20%;
+}
+
+.main {
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: #444444;
+  text-align: center;
+  position: fixed;
+  // position: absolute; //下に位置固定
+  // bottom: 0;
+
+}
+
+.footer-box {
+  padding: 38px 0;
+}
+
+.foot-text {
+}
+
+.admin-head-path, .default-head-path, .user-head-path {
+  color: #333333;
+  margin: 20px;
+}
+
+.admin-head-path:hover, .default-head-path:hover, .user-head-path:hover {
+  color: #FF8C00;
+  text-decoration: underline;
+}
+
+.head-logo {
+  margin: 20px;
+  text-align: left;
+}
+
+.navbar-nav {
+  width: 100%;
 }
