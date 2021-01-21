@@ -1,5 +1,4 @@
-# https://www.freelogodesign.org/preview?lang=en&autodownload=true&logo=5d2a7e71-7b41-455a-b2a5-9552c00aaa19
-https://www.freelogodesign.org/download/file?id=8ff8d510-a07e-4666-8561-a1a56dc6b776_200x200.png
+![Rev com-logo](https://user-images.githubusercontent.com/73174207/105357865-c6e8c680-5c38-11eb-9600-ca28f20782ce.png)
 
 ## サイト概要
 漫画レビューアプリケーション
