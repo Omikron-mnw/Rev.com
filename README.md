@@ -1,4 +1,5 @@
-![Rev com-logo](https://user-images.githubusercontent.com/73174207/105357865-c6e8c680-5c38-11eb-9600-ca28f20782ce.png)
+# Rev.com
+![Rev  com-logo-2](https://user-images.githubusercontent.com/73174207/105358506-981f2000-5c39-11eb-8c66-f21406bff1f7.png)
 
 ## サイト概要
 漫画レビューアプリケーション
