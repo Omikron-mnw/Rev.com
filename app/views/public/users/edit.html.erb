@@ -25,9 +25,12 @@
         </div>
         <!--更新ボタン-->
         <div>
-          <%= f.submit "更新する", class: "btn btn-secondary" %>
+          <%= f.submit "更新する", class: "btn btn-secondary btn-lg" %>
         </div>
       <% end %>
+      <div>
+        <%= link_to "退会画面", user_unsubscribe_path(current_user.id), class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
 </div>

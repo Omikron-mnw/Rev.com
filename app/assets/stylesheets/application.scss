@@ -40,8 +40,9 @@ header {
   // position: fixed; //上部に固定
   width: 100%;
   margin: 0 auto;
-  padding: 20px 20px 0 20px;
+  padding: 0 20px;
   background-color: #444444;
+  border-radius: 0 0 40px 40px;
   // border-bottom-left-radius: 50% 20%;
   // border-bottom-right-radius: 50% 20%;
 }
@@ -69,21 +70,42 @@ footer {
 .foot-text {
 }
 
-.admin-head-path, .default-head-path, .user-head-path {
-  color: #333333;
-  margin: 20px;
+.head-path-box {
+  list-style: none;
+  display: flex;
 }
 
-.admin-head-path:hover, .default-head-path:hover, .user-head-path:hover {
+.admin-head-path, .default-head-path, .user-head-path {
+  color: #fff;
+  margin: 30px 30px 0 30px;
+}
+
+.user-img-path {
+  color: #fff;
+  margin: 30px 30px 0 30px;
+}
+
+.admin-head-path:hover, .default-head-path:hover, .user-head-path:hover, .user-img-path:hover {
   color: #FF8C00;
   text-decoration: underline;
 }
 
 .head-logo {
-  margin: 20px;
   text-align: left;
+}
+
+.navbar {
+  padding: 0 16px;
 }
 
 .navbar-nav {
   width: 100%;
 }
+
+.nav-item {
+  // margin-top: 10px;
+  text-decoration: none;
+  border-left: 0.5px solid #666666;
+  height: 80px;
+}
+

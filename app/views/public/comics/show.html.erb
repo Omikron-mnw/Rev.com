@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row">
+  <div class="row comic-show-box">
     <!--コミック画像-->
-    <div class="col-lg-4 ">
+    <div class="col-lg-4">
       <p class="comic-show-img"><%= image_tag @comic.image_url, size: "220x300", class: "rounded mt-5" %></p>
     </div>
     <!--コミック詳細-->
@@ -28,134 +28,119 @@
       </tr>
     </table>
   </div>
-  
-  <div class"row">
-    <!--タグリスト-->
-    <div class="tag-list">
-      <p><%= @comic.tags.count %></p>
-      <% @tags.each do |tag| %>
-        <p>
-          <!--%= link_to tags_path(tag_id: tag.id) do %>-->
-            #<%= tag.tag_name %>
-          <!--% end %>-->
-        </p>
-        <p>
-          <% if tag.user == current_user %>
-            <%= link_to  comic_tag_path(tag,comic_id: @comic.isbn), method: :delete do %>
-              <i class="fas fa-backspace"></i>
+
+  <div class="row rev-tag-box">
+    <div class="tag-box col-lg-4">
+      <!--タグリスト-->
+      <div class="tag-list">
+        <p><i class="fas fa-tags"></i>　　</p>
+        <% @tags.each do |tag| %>
+          <p>
+            <!--%= link_to tags_path(tag_id: tag.id) do %>-->
+              #<%= tag.tag_name %>
+            <!--% end %>-->
+            <% if tag.user == current_user %>
+              <%= link_to  comic_tag_path(tag,comic_id: @comic.isbn), method: :delete do %>
+                <i class="fas fa-backspace" style="color: red;"></i>
+              <% end %>
             <% end %>
-          <% end %>
-        </p>
-      <% end %>
+          </p>
+        <% end %>
+      </div>
+
+      <!--タグ入力フォーム-->
+      <div>
+        <%= form_with model: @tag, url: comic_tags_path(comic_id: @comic.isbn), method: :post, local: true do |f| %>
+          <%= f.label "タグ追加" %>
+          <%= f.text_field :tag_name, rows: '4', placeholder: "タグをここに" %>
+          <%= f.submit "追加", class: "btn btn-outline-secondary btn-sm" %>
+        <% end %>
+      </div>
     </div>
 
-    <!--タグ入力フォーム-->
-    <div>
-      <%= form_with model: @tag, url: comic_tags_path(comic_id: @comic.isbn), method: :post, local: true do |f| %>
-        <%= f.label "タグ追加" %>
-        <%= f.text_field :tag_name, rows: '4', placeholder: "タグをここに" %>
-        <%= f.submit "追加" %>
-      <% end %>
-    </div>
+    <div class="review-box col-lg-8">
+      <div class="rate-avg-box">
+        <!--レビュー平均-->
+        <p class="star-rating-front" style="width: <%= @comic.review_rate_percentage %>"></p>
+        <div id="avg_rate-<%= @comic.isbn %>"></div>
 
-    <!--管理者の場合-->
-    <% if admin_signed_in? %>
-      <!--編集ボタン-->
-      <div><%= link_to "編集する", edit_admin_comic_path(@comic.isbn), class: "btn btn-secondary" %></div>
-      <!--削除ボタン-->
-      <div><%= link_to "削除する", admin_comic_path(@comic.isbn), method: :delete, class: "btn btn-danger" %></div>
+          <script>
+              $('#avg_rate-<%= @comic.isbn %>').raty({
+                size:     36,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn :  '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half:     true,
+                readOnly: true,
+                score:    <%= @comic.avg_rate.to_f.round(1) %>
+              });
+          </script>
 
-    <!--ユーザーの場合-->
-    <% elsif user_signed_in? %>
-      <div><%= link_to "レビューを書く", new_comic_review_path(@comic.isbn), class: "btn btn-secondary" %></div>
+        <p><%= @comic.avg_rate %>点（<%= @comic.reviews.count %>件のレビュー）</p>
+      </div>
 
-    <!--登録していないまたはログインしていない場合-->
-    <% else %>
-    <% end %>
+      <p class="review-btn">
+        <%= link_to "レビューを書く", new_comic_review_path(@comic.isbn), class: "btn btn-outline-secondary" %>
+      </p>
 
-    <!--レビュー平均-->
-    <p class="star-rating-front" style="width: <%= @comic.review_rate_percentage %>"></p>
-    <div id="avg_rate-<%= @comic.isbn %>"></div>
-
-      <script>
-          $('#avg_rate-<%= @comic.isbn %>').raty({
-            size:     36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn :  '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half:     true,
-            readOnly: true,
-            score:    <%= @comic.avg_rate.to_f.round(1) %>
-          });
-      </script>
-
-    <p><%= @comic.avg_rate %>点（<%= @comic.reviews.count %>件のレビュー）</p>
-
-
-    <!--レビュー一覧-->
-    <% if @reviews.present? %>
-      <% @reviews.each do |review| %>
-        <!--<%= link_to comic_review_path(@comic,review) do %>-->
-        <!--  <%= review.review %>-->
-        <!--<% end %>-->
-        <div class="row reviews">
-          <div class="col-md-2 reviews-user">
-            <%= link_to review.user do %>
-              <%= attachment_image_tag @user, :profile_image ,width: '100px' %>
-            <% end %>
-            <p class="reviews-title"><%= link_to review.user.name, review.user %></p>
-          </div>
-          <div class="col-md-6 mb-3">
-            <div class="reviews-content">
-              <p><%= review.created_at.strftime('%Y/%m/%d') %></p>
-              <h4 class="mb-3">評価：<%= review.rate %>点</h4>
-
-              <!--星評価-->
-              <div id="star-rate-<%= review.id %>"></div>
-                <script>
-                  $('#star-rate-<%= review.id %>').raty({
-                    size:     36,
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn :  '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    half:     true,
-                    readOnly: true,
-                    score:    <%= review.rate %>,
-                  });
-                </script>
-              <!--/星評価-->
-
-              <!--レビュー内容-->
-              <p>
-                <%= link_to comic_review_path(@comic,review) do %>
-                  <p><%= review.review %></p>
+      <!--レビュー一覧-->
+      <% if @reviews.present? %>
+        <% @reviews.each do |review| %>
+          <div class="reviews row">
+            <div class="col-sm-4">
+              <%= link_to review.user do %>
+                <%= attachment_image_tag review.user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
+              <% end %>
+              <p class="review-user-path">
+                <%= link_to user_path(review.user.id) do %>
+                  <p><%= review.user.name %></p>
                 <% end %>
               </p>
-              <!--コメント数-->
-              <p>
-                <i class="far fa-comment-alt"><%= review.comments.count %></i>
-              </p>
-
+              <p class="date"><%= review.created_at.strftime('%Y/%m/%d') %></p>
             </div>
-          </div>
-          <div class="col-md-4">
+            <div class="col-md-7 mb-3">
+              <div class="reviews-content">
 
-              <div class="reviews-comic">
-                <img src="<%= review.comic.comic_image_url %>" alt="">
-                <p><%=  review.comic.title %></p>
+                <h4 class="mb-3">評価：<%= review.rate %>点</h4>
+
+                <!--星評価-->
+                <div id="star-rate-<%= review.id %>"></div>
+                  <script>
+                    $('#star-rate-<%= review.id %>').raty({
+                      size:     36,
+                      starOff:  '<%= asset_path('star-off.png') %>',
+                      starOn :  '<%= asset_path('star-on.png') %>',
+                      starHalf: '<%= asset_path('star-half.png') %>',
+                      half:     true,
+                      readOnly: true,
+                      score:    <%= review.rate %>,
+                    });
+                  </script>
+                <!--/星評価-->
+
+                <!--レビュー内容-->
+                <p>
+                  <%= link_to comic_review_path(@comic, review) do %>
+                    <p class="review-body-path"><%= review.review %></p>
+                  <% end %>
+                </p>
+                <!--コメント数-->
+                <p>
+                  <i class="far fa-comment-alt"><%= review.comments.count %></i>
+                </p>
+
               </div>
+              <div class="edit-btn">
+                <% if current_user == review.user %>
+                  <%= link_to '編集', edit_comic_review_path(@comic,review), method: :get, class:'btn btn-outline-secondary btn-sm' %>
+                  <%= link_to '削除', comic_review_path(@comic,review), method: :delete, class:'btn btn-outline-danger btn-sm' %>
+                <% end %>
+              </div>
+            </div>
 
           </div>
-
-          <div class="col-md-12 edit-button">
-            <% if current_user == review.user %>
-              <%= link_to '編集', edit_comic_review_path(@comic,review), method: :get, class:'btn btn-default' %>
-              <%= link_to '削除', comic_review_path(@comic,review), method: :delete, class:'btn btn-default' %>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-
+    </div>
   </div>
 </div>
