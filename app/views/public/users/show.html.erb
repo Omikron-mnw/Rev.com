@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="">
+    <div class="col-lg-4">
       <div>
         <%= attachment_image_tag @user, :profile_image, size: "200x200", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
       </div>
-      <div>
+      <h5>
         <%= @user.name %>
-      </div>
+      </h5>
     </div>
-    <div class="">
+    <div class="col-lg-">
       <div>
         <%= @user.introduction %>
       </div>
@@ -30,10 +30,10 @@
             <p>プロフィールを編集する</p>
           <% end %>
         </div>
-        <div>
-          <%= link_to "退会画面", user_unsubscribe_path(current_user.id), class: "btn btn-danger" %>
-        </div>
       <% end %>
     </div>
+  </div>
+  <div class="row">
+    <div></div>
   </div>
 </div>

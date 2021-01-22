@@ -12,75 +12,91 @@
         <% if user_signed_in? %>
         <p>
           <%= link_to root_path do %>
-            <p class="head-logo">LOGO</p>
+            <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
         </p>
-        <li>
-          <%= link_to homes_about_path do %>
-            <p class="user-head-path">About</p>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to user_path(current_user) do %>
-            <p class="user-head-path">Mypage</p>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <p class="user-head-path">Logout</p>
-          <% end %>
-        </li>
+        <div class="collapse navbar-collapse justify-content-end ">
+          <ul class="head-path-box">
+            <li class="nav-item">
+              <%= link_to homes_about_path do %>
+                <p class="user-head-path">About</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to user_path(current_user) do %>
+                <p class="user-img-path">
+                  Mypage
+                  <!--%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>-->
+                  <!--%= @user.name %>-->
+                </p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <p class="user-head-path">Logout</p>
+              <% end %>
+            </li>
+          </ul>
+        </div>
 
         <!-- 管理人がログイン時 -->
         <% elsif admin_signed_in? %>
         <p>
           <%= link_to admin_path do %>
-            <p class="head-logo">LOGO</p>
+            <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
         </p>
-        <li>
-          <%= link_to admin_comics_search_path do %>
-            <p class="admin-head-path">コミック新規登録</p>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_comics_path do %>
-            <p class="admin-head-path">コミック一覧</p>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_categories_path do %>
-            <p class="admin-head-path">カテゴリー登録/一覧</p>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_admin_session_path, method: :delete do %>
-            <p class="admin-head-path">ログアウト</p>
-          <% end %>
-        </li>
+        <div class="collapse navbar-collapse justify-content-end ">
+          <ul class="head-path-box">
+            <li class="nav-item">
+              <%= link_to admin_comics_search_path do %>
+                <p class="admin-head-path">コミック新規登録</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_comics_path do %>
+                <p class="admin-head-path">コミック一覧</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admin_categories_path do %>
+                <p class="admin-head-path">カテゴリー登録/一覧</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to destroy_admin_session_path, method: :delete do %>
+                <p class="admin-head-path">ログアウト</p>
+              <% end %>
+            </li>
+          </ul>
+        </div>
 
         <!-- どちらもログインしていない時 -->
         <% else %>
         <p>
           <%= link_to root_path do %>
-            <p class="head-logo">LOGO</p>
+            <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
         </p>
-        <li>
-          <%= link_to homes_about_path do %>
-            <p class="default-head-path">About</p>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_registration_path do %>
-            <p class="default-head-path">新規登録</p>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_session_path do %>
-           <p class="default-head-path">LOGIN</p>
-          <% end %>
-        </li>
+        <div class="collapse navbar-collapse justify-content-end ">
+          <ul class="head-path-box">
+            <li class="nav-item">
+              <%= link_to homes_about_path do %>
+                <p class="default-head-path">About</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_registration_path do %>
+                <p class="default-head-path">新規登録</p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to new_user_session_path do %>
+               <p class="default-head-path">LOGIN</p>
+              <% end %>
+            </li>
+          </ul>
+        </div>
 
         <% end %>
 

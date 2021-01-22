@@ -1,89 +1,85 @@
-        <div class="row reviews">
-          <div class="col-md-2 reviews-user">
-            <%= link_to @review.user do %>
-              <%= attachment_image_tag @user, :profile_image, width: '100px' %>
-            <% end %>
-            <p class="reviews-title"><%= link_to @review.user.name, @review.user %></p>
-          </div>
-          レビュー評価表示
-          <div class="col-md-6 mb-3">
-            <div class="reviews-content">
-              <p><%= @review.created_at.strftime('%Y/%m/%d') %></p>
-              <h4 class="mb-3">評価：<%= @review.rate %>点</h4>
+<div class="container">
+  <div class="row reviews">
+    <div class="col-md-2 review-user">
+      <%= link_to @review.user do %>
+        <%= attachment_image_tag @user, :profile_image, size: "70x70", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
+      <% end %>
+      <p class="review-user-path"><%= link_to @review.user.name, @review.user %></p>
+      <div class="edit-btn">
+        <% if current_user == @review.user %>
+          <%= link_to '編集', edit_comic_review_path(@review.id), method: :get, class:'btn btn-outline-secondary btn-sm' %>
+          <%= link_to '削除', comic_review_path(@review.id,comic_id: @comic.id), method: :delete, class:'btn btn-outline-danger btn-sm' %>
+        <% end %>
+      </div>
+    </div>
+    <!--レビュー評価表示-->
+    <div class="col-md-8 mb-3">
+      <div class="review-content">
+        <p><%= @review.created_at.strftime('%Y/%m/%d') %></p>
+        <h4 class="mb-3">評価：<%= @review.rate %>点</h4>
 
-              <!--星評価-->
-               <div id="star-rate-<%= @review.id %>"></div>
-                <script>
-                  $('#star-rate-<%= @review.id %>').raty({
-                    size:     36,
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn :  '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    half:     true,
-                    readOnly: true,
-                    score:    <%= @review.rate %>,
-                  });
-                </script>
-              <!--/星評価-->
+        <!--星評価-->
+         <div id="star-rate-<%= @review.id %>"></div>
+          <script>
+            $('#star-rate-<%= @review.id %>').raty({
+              size:     36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn :  '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half:     true,
+              readOnly: true,
+              score:    <%= @review.rate %>,
+            });
+          </script>
+        <!--/星評価-->
 
-              <!--レビュー内容-->
-              <p><%= @review.review %></p>
+        <!--レビュー内容-->
+        <p class="rev-body"><%= @review.review %></p>
 
-              <!--タグ表示-->
-              <!--<div>-->
-              <!--  % @tags.each do |tag| %>-->
-              <!--    <p>-->
-              <!--      <i class="fas fa-tags">%= tag.comics.count %></i>-->
-              <!--    </p>-->
-              <!--    <p>-->
-              <!--      %= link_to comic_tag_search_path(tag_id: tag.id) do %>-->
-              <!--        %= tag.tag_name %>-->
-              <!--      % end %>-->
-              <!--    </p>-->
-              <!--  % end %>-->
-              <!--</div>-->
-
-              <!--いいね機能-->
-              <div>
-                <%= render 'public/likes/like_button', review: @review %>
-              </div>
-
-            </div>
-          </div>
-          <div class="col-md-4">
-            <%= link_to @review.comic do %>
-              <div class="reviews-comic">
-                <img src="<%= @review.comic.comic_image_url %>" alt="">
-                <p><%=  @review.comic.title %></p>
-              </div>
-            <%end %>
-          </div>
-          <div class="col-md-12 edit-button">
-            <% if current_user == @review.user %>
-              <%= link_to '編集', edit_comic_review_path(@review.id), method: :get, class:'btn btn-default' %>
-              <%= link_to '削除', comic_review_path(@review.id,comic_id: @comic.id), method: :delete, class:'btn btn-default' %>
-            <% end %>
-          </div>
+        <!--いいね機能-->
+        <div>
+          <%= render 'public/likes/like_button', review: @review %>
         </div>
 
-        <!--コメントの入力フォーム-->
-        <div class="new-comment">
-          <%= form_with model: @comment, url: comic_review_comments_path(review_id: @review.id), method: :post, local: true do |f| %>
-            <p><%= f.text_area :comment, rows: '5', placeholder: "コメント欄" %></p>
-            <p><%= f.submit "コメントする"%></p>
-          <% end %>
+      </div>
+    </div>
+    <!--レビューしたコミックの画像とタイトル-->
+    <div class="col-md-2">
+      <%= link_to @review.comic do %>
+        <div class="reviews-comic">
+          <p><%= image_tag @review.comic.image_url, :size => "110x150" %></p>
+          <p class="comic-path"><%=  @review.comic.title %></p>
         </div>
+      <%end %>
+    </div>
+  </div>
 
-        <!--コメント一覧-->
-        <div class="comments">
-          <p>
-            <i class="far fa-comment-alt"><%= @review.comments.count %></i>
-          </p>
-          <% @review.comments.each do |comment| %>
+  <div class="row">
+      <!--コメントの入力フォーム-->
+    <div class="col-md-3 new-comment">
+      <!--コメント数-->
+      <p class="">
+          <i class="far fa-comment-alt comment-counter"><%= @review.comments.count %></i>
+      </p>
+      <p class="">
+        <%= form_with model: @comment, url: comic_review_comments_path(review_id: @review.id), method: :post, local: true do |f| %>
+          <p><%= f.text_area :comment, rows: '5', placeholder: "コメント欄" %></p>
+          <p><%= f.submit "コメントする", class: "btn btn-outline-secondary" %></p>
+        <% end %>
+      </p>
+    </div>
+
+    <!--コメント一覧-->
+    <div class="col-md-7">
+      <% @review.comments.each do |comment| %>
+        <div class="row comments">
+          <div class="col-sm-2">
             <p>
               <%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
             </p>
             <p><%= comment.user.name %></p>
+          </div>
+          <div class="col-sm-5">
             <p>
               <%= comment.comment %>
               <%= comment.created_at.strftime('%Y/%m/%d') %>
@@ -91,8 +87,12 @@
             <!--コメント削除ボタン-->
             <% if comment.user == current_user %>
               <p class="cpmment-delete">
-                <%= link_to "削除", comic_review_comment_path(comment,review_id: @review.id), method: :delete %>
+                <%= link_to "削除", comic_review_comment_path(comment,review_id: @review.id), method: :delete, class: "btn btn-outline-danger btn-sm" %>
               </p>
             <% end %>
-          <% end %>
+          </div>
         </div>
+      <% end %>
+    </div>
+  </div>
+</div>

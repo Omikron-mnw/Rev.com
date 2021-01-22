@@ -3,16 +3,16 @@ class Public::ReviewsController < ApplicationController
 
   def new
     @review = Review.new
-    @comic = Comic.find(params[:comic_id])
+    @comic = Comic.find_by(isbn: params[:comic_id])
   end
 
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
-      redirect_to comic_path(@review.comic.id), notice: "レビューを追加しました"
+      redirect_to comic_path(@review.comic.isbn), notice: "レビューを追加しました"
     else
-      @comic = Comic.find(params[:comic_id])
+      @comic = Comic.find_by(isbn: params[:comic_id])
       render :new
     end
   end
@@ -23,7 +23,7 @@ class Public::ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
-    @comic = Comic.find_by(id: params[:comic_id])
+    @comic = Comic.find_by(isbn: params[:comic_id])
     @comment = Comment.new
   end
 
@@ -42,10 +42,10 @@ class Public::ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @comic = Comic.find_by(id: params[:comic_id])
+    @comic = Comic.find_by(isbn: params[:comic_id])
     # binding.pry
     @review.destroy
-    redirect_to comic_path(@comic.id), notice: "レビューを削除しました"
+    redirect_to comic_path(@comic.isbn), notice: "レビューを削除しました"
   end
 
   # def search_comic
