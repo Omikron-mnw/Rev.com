@@ -1,3 +1,14 @@
+<div class="main-visual container-fluid">
+  <p class="back-img">
+    <h4>漫画好きのためのアプリ</h4>
+    <p>
+      <p><%= image_tag 'Rev.com-logo-2.png', :size => "200x200" %></p>
+      <h4>Rev.com</h4>
+
+    </p>
+  </p>
+</div>
+
 <div class="container">
   <div class="row">
     <div>
@@ -6,36 +17,12 @@
       <div class ="container">
         <div class="row">
           <div>
-            <!--コミック一覧-->
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>タイトル</th>
-                  <th>作者</th>
-                  <th>出版社</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% @comics.each do |comic| %>
-                  <tr>
-                    <td>
-                      <%= link_to comic_path(comic.isbn) do %>
-                        <%= image_tag comic.image_url, size: "44x60" %>
-                      <% end %>
-                    </td>
-                    <td>
-                      <%= link_to comic_path(comic.isbn) do %>
-                        <%= comic.title %>
-                      <% end %>
-                    </td>
-                    <td><%= comic.author %></td>
-                    <td><%= comic.publisher %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-
+            <div class="comic-slide">
+              <!--%= render 'public/homes/slider', random: @random %>-->
+            </div>
+            <div>
+              <%= render 'public/homes/comic_index', comics: @comics %>
+            </div>
           </div>
         </div>
       </div>
