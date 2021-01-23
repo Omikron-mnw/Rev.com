@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reviews = current_user.reviews
   end
 
   def edit
@@ -28,7 +29,7 @@ class Public::UsersController < ApplicationController
   def withdraw
     @user = User.find(params[:id])
     # is_deletedカラムにフラグを立てる(defaultはfalse)
-    if @user.update(user_params)
+    if @user.update(is_deleted: true)
       # ログアウトさせる
       reset_session
       redirect_to root_path, notice: "ありがとうございました。またのご利用をお待ちしております。"
@@ -37,7 +38,7 @@ class Public::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :profile_image, :introduction)
+    params.require(:user).permit(:name, :email, :profile_image, :introduction, :is_deleted)
   end
 
 end

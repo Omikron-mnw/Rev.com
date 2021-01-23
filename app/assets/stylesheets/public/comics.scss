@@ -18,7 +18,7 @@
 }
 
 .rev-tag-box {
-  display: flex;
+  display: flex; 
   flex-wrap: wrap;
   margin-top: 20px;
 }
@@ -30,6 +30,10 @@
 .tag-list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.tag-item {
+  margin-right: 8px;
 }
 
 .review-box {
