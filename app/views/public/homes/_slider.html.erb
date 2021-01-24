@@ -1,7 +1,8 @@
 <div class="container">
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide theTarget">
+  <div class="row">
+    <div class="col-lg-12">
+      <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+      <div id="slider2">
         <% random.each do |comic| %>
           <div>
             <%= link_to comic_path(comic) do %>
@@ -30,12 +31,6 @@
           </div>
         <% end %>
       </div>
-       <!--ページネーションを表示する場合 -->
-      <div class="pager"></div>
-
-       <!--前後スライドへのナビゲーションボタン(矢印)を表示する場合 -->
-      <div class="button-prev"></div>
-      <div class="button-next"></div>
 
     </div>
   </div>

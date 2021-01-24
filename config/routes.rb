@@ -44,6 +44,8 @@ Rails.application.routes.draw do
     get "relationships/follows" => "relationships#follow", as: 'relationships_follows'
     get "relationships/followers" => "relationships#follower", as: 'relationships_followers'
     #Comic関連のルーティング
+      # カテゴリー検索
+    get "category/search" => "homes#search", as: 'search_comics'
     get "comics/:isbn" => "comics#show", as: 'comic'
     resources :comics, only: [:index] do
       #レビュー機能
@@ -52,10 +54,11 @@ Rails.application.routes.draw do
          resource :likes, only: [:create, :destroy]
       end
       #Tag機能
-      resources :tags, only: [:create, :destroy] do
-        get 'search', to: 'tag#search'
-      end
+      resources :tags, only: [:create, :destroy] #do
+        # get 'search', to: 'tag#search'
+      # end
     end
+    get "tags/:tag_name/search" => "tags#search", as: 'tag_search'
   end
 
 end

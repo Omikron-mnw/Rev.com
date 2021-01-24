@@ -1,11 +1,20 @@
 class Public::HomesController < ApplicationController
 
   def top
+    @categories = Category.all
     @comics = Comic.all
-    # @random = Comic.order("RANDOM()").limit(12)
+    @random = Comic.order("RANDOM()").limit(12)
   end
 
   def about
+    @categories = Category.all
+  end
+
+  def search
+    @categories = Category.all
+    @category = Category.find(params[:id])
+    @comics = @category.comics
+    @comic = Comic.find_by(isbn: params[:isbn])
   end
 
 end

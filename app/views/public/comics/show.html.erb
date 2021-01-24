@@ -36,9 +36,9 @@
         <p><i class="fas fa-tags"></i>　　</p>
         <% @tags.each do |tag| %>
           <p class="tag-item">
-            <!--%= link_to tags_path(tag_id: tag.id) do %>-->
+            <%= link_to tag_search_path(tag_name: tag.tag_name) do %>
               #<%= tag.tag_name %>
-            <!--% end %>-->
+            <% end %>
             <% if tag.user == current_user %>
               <%= link_to  comic_tag_path(tag,comic_id: @comic.isbn), method: :delete do %>
                 <i class="fas fa-backspace" style="color: red;"></i>
@@ -143,4 +143,7 @@
       <% end %>
     </div>
   </div>
+</div>
+<div class="category-list">
+  <%= render 'layouts/category', categories: @categories %>
 </div>
