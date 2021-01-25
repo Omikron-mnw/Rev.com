@@ -36,5 +36,5 @@
 
 ## 使用素材
 
-背景画像 : https://www.stockio.com/free-vector/abstract-geometric-background
+背景画像 : https://www.stockio.com/free-vector/abstract-geometric-background<br />
 コミック画像 : Rakuten API
