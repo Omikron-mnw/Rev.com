@@ -35,3 +35,6 @@
 - IDE：Cloud9
 
 ## 使用素材
+
+背景画像 : https://www.stockio.com/free-vector/abstract-geometric-background
+コミック画像 : Rakuten API
