@@ -139,20 +139,18 @@ footer {
   height: 120px;
   width: 120px;
   margin: 20px;
-  background: #FF9872;
-  // background-image: linear-gradient(to left, #BDBBBE 0%, #9D9EA3 100%), radial-gradient(88% 271%, rgba(255, 255, 255, 0.25) 0%, rgba(254, 254, 254, 0.25) 1%, rgba(0, 0, 0, 0.25) 100%), radial-gradient(50% 100%, rgba(255, 255, 255, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%);
-  // background-blend-mode: normal, lighten, soft-light;
+  background-image: image-url("sunbeams.jpg");
 }
 
 .category-text {
-  color: #fff;
+  color: #48D1CC;
   text-align: center;
   margin-top: 40px;
 }
 
 .category-text:hover {
   text-decoration: underline;
-  color: #666;
+  color: #FF8C00;
 }
 
 //ログイン画面、新規登録画面などDevise周り
@@ -167,13 +165,3 @@ footer {
 }
 
 
-// スライドショー
-.slick-next {
-    right: 10px !important;
-    z-index: 100;
- }
-
-.slick-prev {
-    left: 10px !important;
-    z-index: 100;
- }

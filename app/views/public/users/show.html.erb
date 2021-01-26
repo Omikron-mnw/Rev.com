@@ -8,7 +8,7 @@
         <%= @user.name %>
       </h5>
       <!--フォローボタン-->
-      <div>
+      <div >
         <%= render 'public/relationships/follow_button', user: @user %>
       </div>
       <!--フォロー/フォロワー一覧-->
@@ -18,18 +18,18 @@
       </div>
     </div>
     <div class="col-lg-8">
-      <div>
+      <div class="introduction">
         <%= @user.introduction %>
       </div>
 
       <!--ログインユーザーのみに表示-->
       <% if current_user.id == @user.id %>
-        <div>
+        <div class="mypage-link">
           <%= link_to edit_user_path(current_user) do %>
             <p>プロフィールを編集する</p>
           <% end %>
         </div>
-        <div>
+        <div class="mypage-link">
           <%= link_to "パスワードを変更する", edit_user_registration_path %>
         </div>
       <% end %>
