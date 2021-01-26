@@ -11,19 +11,27 @@
 
 <div class="container">
   <div class="row">
-    <div>
-      <h3>コミック</h3>
+    <div class="col-lg-12">
+      <div class="review-slider">
+        <%= render 'public/homes/review_slider', revdom: @revdom, comic: @comic %>
+      </div>
+    </div>
+    <div class="slider-box col-lg-12">
+      <h3 class="top-section">おすすめコミック</h3>
 
-          <div>
-            <div class="comic-slider">
-              <%= render 'public/homes/slider', random: @random %>
-            </div>
-            <div>
-              <!--%= render 'public/homes/comic_index', comics: @comics %>-->
-            </div>
-          </div>
+        <div class="comic-slider">
+          <%= render 'public/homes/slider', random: @random %>
+        </div>
 
     </div>
+    <div class="col-lg-12">
+      <div class="top-comic-link">
+        <%= link_to comics_path do %>
+          <p class="top-comic-path">コミック一覧へ</p>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
 <div class="category-list">

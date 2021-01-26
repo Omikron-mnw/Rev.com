@@ -18,6 +18,7 @@ class Devise::Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+
   protected
 
   def reject_user

@@ -54,6 +54,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:comic_id, :user_id, :review, :rate)
   end

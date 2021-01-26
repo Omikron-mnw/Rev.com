@@ -28,4 +28,28 @@ class Comic < ApplicationRecord
     end
   end
 
+  # 検索
+  ## User
+  def Comic.search(search, user_or_comic, how_search)
+    if user_or_comic == "2"
+      if how_search == "1"
+        Comic.where(['title LIKE ?', "%#{search}%"])
+      elsif how_search == "2"
+        Comic.where(['title LIKE ?', "%#{search}"])
+      elsif how_search == "3"
+        Comic.where(['title LIKE ?', "#{search}%"])
+      elsif how_search == "4"
+        Comic.where(['title LIKE ?', "#{search}"])
+      else
+        Comic.all
+      end
+    end
+  end
+  ## Admin
+  def self.search(search)
+    return Comic.all unless search
+    Comic.where(['title LIKE ?', "%#{search}%"])
+  end
+
+
 end

@@ -2,8 +2,8 @@ class Public::HomesController < ApplicationController
 
   def top
     @categories = Category.all
-    @comics = Comic.all
-    @random = Comic.order("RANDOM()").limit(12)
+    @random = Comic.order("RANDOM()").limit(15)
+    @revdom = Review.order("RANDOM()").limit(5)
   end
 
   def about

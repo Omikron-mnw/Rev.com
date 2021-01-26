@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bxslider
  *= require_tree .
  *= require_self
  */
@@ -19,8 +18,6 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-// bxsliderを読み込ませるため
-@import "bxslider";
 
 
 
@@ -42,7 +39,6 @@ body {
 }
 
 header {
-  // position: fixed; //上部に固定
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
@@ -52,12 +48,17 @@ header {
   // border-bottom-right-radius: 50% 20%;
 }
 
+.head-search {
+  text-align: center;
+}
+
 .main {
   width: 100%;
   height: 100%;
   min-height: 100%;
   height: auto !important;
   position: relative;
+  color: #333;
 }
 
 footer {
@@ -91,7 +92,7 @@ footer {
 
 .user-img-path {
   color: #fff;
-  margin: 30px 30px 0 30px;
+  margin: 19px 30px 0 30px;
 }
 
 .admin-head-path:hover, .default-head-path:hover, .user-head-path:hover, .user-img-path:hover {
@@ -112,14 +113,12 @@ footer {
 }
 
 .nav-item {
-  // margin-top: 10px;
   text-decoration: none;
   border-left: 0.5px solid #666666;
   height: 80px;
 }
 
 .category-area {
-  // background: ;
   padding: 20px 30px;
   border-top: 1px solid #bbb;
 }

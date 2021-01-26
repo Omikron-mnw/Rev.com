@@ -25,7 +25,7 @@
       <!--ログインユーザーのみに表示-->
       <% if current_user.id == @user.id %>
         <div>
-          <%= link_to edit_user_path do %>
+          <%= link_to edit_user_path(current_user) do %>
             <p>プロフィールを編集する</p>
           <% end %>
         </div>

@@ -4,7 +4,6 @@
 
 .main-visual {
     background-image: image-url("red-mountain.jpg");
-    // background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
     background-size: cover;
     width: 100%;
     height: 350px;
@@ -22,10 +21,9 @@ html, body {
 }
 
 body {
-    // background: #eee;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 14px;
-    color:#000;
+    color: #000;
     margin: 0;
     padding: 0;
 }
@@ -36,10 +34,17 @@ body {
   height: 100%;
 }
 
-#slider2 {
+.top-section {
+    margin: 20px 0;
+}
+
+.slider-box {
+    text-align: center;
+}
+
+#slider {
     text-align: center;
     font-size: 18px;
-    background: #eee;
     // width: 600px;
 
     /* テキストを中央揃え */
@@ -47,9 +52,6 @@ body {
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
     justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -58,8 +60,10 @@ body {
 }
 
 .comic-slider {
-    width: 600px;
+    width: 1000px;
     height: 300px;
+    padding: 20px 30px 20px 0;
+    margin: 20px 0 20px 100px;
 }
 
 .rate-stars {
@@ -67,6 +71,35 @@ body {
     justify-content: center;
 }
 
+.rate-text {
+  font-size: 24px;
+}
+
+#review-slider {
+    background: #eee;
+    width: 600px;
+    height: 350px;
+}
+
+.review-slider {
+    text-align: centers;
+}
+
+.top-comic-link {
+    text-align: center;
+    margin: 200px 0 0 0;
+}
+
+.top-comic-path {
+    color: #333;
+    font-size: 36px;
+
+}
+
+.top-comic-path:hover {
+    color: #FF8C00;
+    text-decoration: underline;
+}
 
 //Aboutページ
 .about-all-box {
@@ -123,4 +156,8 @@ body {
 
 .search-item {
     margin: 20px;
+}
+
+.rate-number {
+    font-size: 18px;
 }

@@ -29,7 +29,26 @@ class User < ApplicationRecord
   def following?(other_user)
     self.followings.include?(other_user)
   end
-  # ここまで
+  # ここまで/
+
+  # 検索
+  def User.search(search, user_or_comic, how_search)
+    if user_or_comic == "1"
+        if how_search == "1"
+            User.where(['name LIKE ?', "%#{search}%"])
+        elsif how_search == "2"
+            User.where(['name LIKE ?', "%#{search}"])
+        elsif how_search == "3"
+            User.where(['name LIKE ?', "#{search}%"])
+        elsif how_search == "4"
+            User.where(['name LIKE ?', "#{search}"])
+        else
+            User.all
+        end
+    end
+  end
+
+
 
   # 画像投稿機能
   attachment :profile_image
@@ -38,5 +57,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  validates :introduction, length: { maximum: 200 }
 
 end
