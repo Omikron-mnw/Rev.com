@@ -1,4 +1,5 @@
 class Public::TagsController < ApplicationController
+  before_action :authenticate_user!, except: [:search]
 
 
   def create
@@ -18,6 +19,7 @@ class Public::TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @comic = Comic.find_by(isbn: params[:comic_id])
     if @tag.destroy
+      [:flash[:notice] = ""]
       redirect_to comic_path(isbn: @comic.isbn)
     end
   end

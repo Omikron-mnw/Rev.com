@@ -1,6 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
+      <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.js"></script>-->
       <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
       <div id="slider2">
         <% random.each do |comic| %>
@@ -12,7 +10,7 @@
 
             <div>
               <p class="star-rating-front" style="width: <%= comic.review_rate_percentage %>"></p>
-              <div id="avg_rate-<%= comic.isbn %>"></div>
+              <div id="avg_rate-<%= comic.isbn %>" class="rate-stars"></div>
 
               <script>
                   $('#avg_rate-<%= comic.isbn %>').raty({
@@ -31,8 +29,4 @@
           </div>
         <% end %>
       </div>
-
-    </div>
-  </div>
-</div>
 

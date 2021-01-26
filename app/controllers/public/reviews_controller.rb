@@ -1,5 +1,5 @@
 class Public::ReviewsController < ApplicationController
-  # before_action :set_review
+  before_action :authenticate_user!
 
   def new
     @categories = Category.all
@@ -40,6 +40,7 @@ class Public::ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to comic_review_path(@review.id), notice: "更新しました"
     else
+      @categories = Category.all
       render :edit
     end
   end

@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :set_user,except: [:show]
+  before_action :set_user,except: [:follow, :follower]
 
   def follow
     @user = User.find(params[:id])
