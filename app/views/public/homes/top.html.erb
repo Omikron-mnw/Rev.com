@@ -14,19 +14,18 @@
     <div>
       <h3>コミック</h3>
 
-      <div class ="container">
-        <div class="row">
           <div>
-            <div class="comic-slide">
-              <!--%= render 'public/homes/slider', random: @random %>-->
+            <div class="comic-slider">
+              <%= render 'public/homes/slider', random: @random %>
             </div>
             <div>
-              <%= render 'public/homes/comic_index', comics: @comics %>
+              <!--%= render 'public/homes/comic_index', comics: @comics %>-->
             </div>
           </div>
-        </div>
-      </div>
 
     </div>
   </div>
+</div>
+<div class="category-list">
+  <%= render 'layouts/category', categories: @categories %>
 </div>

@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row rev-edit-box">
     <div class="col-lg-10">
+      <!--エラーメッセージ-->
+      <div style="font-size: 20px;">
+        <%= render "layouts/error_messages", model: @review %>
+      </div>
       <!--レビュー編集フォーム-->
       <%= form_with model: @review, url: comic_review_path(@review.id), method: :patch, local: true do |f| %>
 
@@ -40,4 +44,7 @@
 
     </div>
   </div>
+</div>
+<div class="category-list">
+  <%= render 'layouts/category', categories: @categories %>
 </div>

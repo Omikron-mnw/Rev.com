@@ -15,12 +15,12 @@
           <% @comics.each do |comic| %>
             <tr>
               <td>
-                <%= link_to admin_comic_path(comic.id) do %>
+                <%= link_to comic_path(comic.isbn) do %>
                   <%= attachment_image_tag comic, :comic_image, size: "44x60", format: 'jpg', fallback: "no_image.jpg" %>
                 <% end %>
               </td>
               <td>
-                <%= link_to admin_comic_path(comic.id) do %>
+                <%= link_to comic_path(comic.isbn) do %>
                   <%= comic.title %>
                 <% end %>
               </td>

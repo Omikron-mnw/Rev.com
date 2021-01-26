@@ -1,7 +1,8 @@
 class Public::ReviewsController < ApplicationController
-  # before_action :set_review
+  before_action :authenticate_user!
 
   def new
+    @categories = Category.all
     @review = Review.new
     @comic = Comic.find_by(isbn: params[:comic_id])
   end
@@ -18,16 +19,19 @@ class Public::ReviewsController < ApplicationController
   end
 
   def index
+    @categories = Category.all
     @reviews = @comic.reviews
   end
 
   def show
+    @categories = Category.all
     @review = Review.find(params[:id])
     @comic = Comic.find_by(isbn: params[:comic_id])
     @comment = Comment.new
   end
 
   def edit
+    @categories = Category.all
     @review = Review.find(params[:id])
   end
 
@@ -36,27 +40,18 @@ class Public::ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to comic_review_path(@review.id), notice: "更新しました"
     else
+      @categories = Category.all
       render :edit
     end
   end
 
   def destroy
+    @categories = Category.all
     @review = Review.find(params[:id])
     @comic = Comic.find_by(isbn: params[:comic_id])
-    # binding.pry
     @review.destroy
     redirect_to comic_path(@comic.isbn), notice: "レビューを削除しました"
   end
-
-  # def search_comic
-  #   @tag_list = Tag.all
-  #   @tag = Tag.find(params[:id])
-  #   @comics = @tag.review.comics
-  # end
-
-  # def set_review
-  #   @review = Review.find(params[:id])
-  # end
 
   private
   def review_params

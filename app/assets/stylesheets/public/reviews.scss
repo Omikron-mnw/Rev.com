@@ -38,6 +38,7 @@
 
 .comments {
   margin: 1px 1px 20px 1px;
+  border-bottom: 1px solid #bbb;
 }
 
 .review-group {
@@ -48,3 +49,6 @@
   text-align: right;
 }
 
+#comments_area {
+  background: #ddd;
+}

@@ -20,10 +20,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 // bxsliderを読み込ませるため
-// @import "bxslider";
-// slickを読み込ませるため
-@import "slick-theme";
-@import "slick";
+@import "bxslider";
 
 
 
@@ -121,5 +118,63 @@ footer {
   height: 80px;
 }
 
+.category-area {
+  // background: ;
+  padding: 20px 30px;
+  border-top: 1px solid #bbb;
+}
+
+.category-list {
+  height: 400px;
+  margin: 50px 0 20px 0;
+  padding: 0 0 30px 0;
+}
+
+.category-box {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.category-name {
+  height: 120px;
+  width: 120px;
+  margin: 20px;
+  background: #FF9872;
+  // background-image: linear-gradient(to left, #BDBBBE 0%, #9D9EA3 100%), radial-gradient(88% 271%, rgba(255, 255, 255, 0.25) 0%, rgba(254, 254, 254, 0.25) 1%, rgba(0, 0, 0, 0.25) 100%), radial-gradient(50% 100%, rgba(255, 255, 255, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%);
+  // background-blend-mode: normal, lighten, soft-light;
+}
+
+.category-text {
+  color: #fff;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.category-text:hover {
+  text-decoration: underline;
+  color: #666;
+}
+
+//ログイン画面、新規登録画面などDevise周り
+
+.resistration-new, .session-new, .password-change {
+  text-align: center;
+}
+
+.field, .devise-link {
+  margin: 20px;
+  font-size: 18px;
+}
 
 
+// スライドショー
+.slick-next {
+    right: 10px !important;
+    z-index: 100;
+ }
+
+.slick-prev {
+    left: 10px !important;
+    z-index: 100;
+ }

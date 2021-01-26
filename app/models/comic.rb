@@ -9,6 +9,7 @@ class Comic < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :author, presence: true
   validates :publisher, presence: true
+  validates :category_id, presence: true
 
   # レビュー平均
   def avg_rate

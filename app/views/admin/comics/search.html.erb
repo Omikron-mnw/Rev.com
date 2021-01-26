@@ -3,6 +3,7 @@
 
     <!--検索フォーム-->
     <div class="col-lg-5">
+
       <%= form_tag(admin_comics_search_path, method: :get) do %>
         <p class="form-box"><%= text_field_tag :title, @title, :size => "50x2" %></p>
         <p class="form-btn"><%= submit_tag "検索", class: "btn btn-outline-secondary btn-lg" %></p>
