@@ -5,9 +5,11 @@
 .main-visual {
     background-image: image-url("red-mountain.jpg");
     background-size: cover;
+    background-position: center bottom;
     width: 100%;
     height: 350px;
     text-align: center;
+    color: #fff;
 }
 
 .comic-index {
@@ -34,9 +36,6 @@ body {
   height: 100%;
 }
 
-.top-section {
-    margin: 20px 0;
-}
 
 // スライドショー
 .slick-next {
@@ -49,11 +48,30 @@ body {
     z-index: 100;
  }
 
-.slider-box {
+.next {
+    font-size: 30px;
+    color: #FF9872;
+}
+
+.prev {
+    font-size: 30px;
+    color: #FF9872;
+}
+
+ .review-slider-box {
+    //  background: #eee;
+ }
+
+ .comic-slider-box {
+     margin-top: 30px;
+     border-top: 1px solid #bbb;
+ }
+
+.comic-slider-box, .review-slider-box {
     text-align: center;
 }
 
-#slider {
+#slider, #review-slider {
     text-align: center;
     font-size: 18px;
     // width: 600px;
@@ -67,14 +85,18 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     -webkit-align-items: center;
-    align-items: center;
+    // align-items: center;
 }
 
 .comic-slider {
     width: 1000px;
     height: 300px;
     padding: 20px 30px 20px 0;
-    margin: 20px 0 20px 100px;
+    margin: 20px 0 20px 60px;
+}
+
+.comic-slider-item {
+    margin: 5px;
 }
 
 .rate-stars {
@@ -87,13 +109,58 @@ body {
 }
 
 #review-slider {
-    background: #eee;
     width: 600px;
-    height: 350px;
+    height: 280px;
 }
 
 .review-slider {
-    text-align: centers;
+    text-align: center;
+    margin: 20px 0 30px 210px;
+}
+
+.user-info {
+    width: 200px;
+    text-align: left;
+    padding: 70px 30px 0 20px;
+    margin: 0;
+}
+
+.comic-info {
+    width: 200px;
+    position: relative;
+    bottom: 150px;
+    left: 450px;
+    // display: block;
+    // margin: 0 0 0 500px;
+}
+
+.review-info {
+    width: 300px;
+    position: relative;
+    bottom: 300px;
+    left: 110px;
+}
+
+.review-comic-title {
+    width: 130px;
+    position: relative;
+    right: 20px;
+}
+
+.review-slider-title {
+    text-align: center;
+    margin: 30px 0 40px 0;
+}
+
+.comic-slider-title, .review-slider-title {
+    margin: 20px 0;
+}
+
+.review-slider-item {
+    background-color: #F5FFFA;
+    text-align: center;
+    height: 300px;
+    margin-bottom: 50px;
 }
 
 .top-comic-link {
@@ -111,6 +178,7 @@ body {
     color: #FF8C00;
     text-decoration: underline;
 }
+
 
 //Aboutページ
 .about-all-box {

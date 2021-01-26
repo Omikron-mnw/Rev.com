@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require activestorage
 
-
+//コミック
 /* global $document */
 $(document).on('turbolinks:load', function() {
   /* global $ */
@@ -25,9 +25,15 @@ $(document).on('turbolinks:load', function() {
     slidesToScroll: 1,
     autoplay: true,
     dots: true,
+    adaptiveHeight: false,
+    speed: 700,
+    pauseOnHover: true,
+    prevArrow:'<div class="prev"><i class="fas fa-caret-square-left"></i></div>',
+	  nextArrow:'<div class="next"><i class="fas fa-caret-square-right"></i></div>',
   });
 });
 
+//レビュー
 /* global $document */
 $(document).on('turbolinks:load', function() {
   /* global $ */
@@ -36,5 +42,10 @@ $(document).on('turbolinks:load', function() {
     slidesToScroll: 1,
     autoplay: true,
     dots: true,
+    adaptiveHeight: false,
+    speed: 1200,
+    pauseOnHover: true,
+    prevArrow:'<div class="prev"><i class="fas fa-caret-square-left"></i></div>',
+	  nextArrow:'<div class="next"><i class="fas fa-caret-square-right"></i></div>',
   });
 });
