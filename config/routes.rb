@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     #TopページをHomeに変更
     get '/' => 'homes#top'
-    get "search/homes" => "homes#search", as: 'homes_search'
+    # get "search/homes" => "homes#search", as: 'homes_search'
 
     get "comics/:isbn" => "comics#show", as: 'comic'
     get "comics/:isbn/edit" => "comics#edit", as: 'comic_edit'

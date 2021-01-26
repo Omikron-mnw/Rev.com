@@ -46,10 +46,10 @@ class Comic < ApplicationRecord
     end
   end
   ## Admin
-  def self.search(search)
-    return Comic.all unless search
-    Comic.where(['title LIKE ?', "%#{search}%"])
-  end
+  # def self.search(search)
+  #   return Comic.all unless search
+  #   Comic.where(['title LIKE ?', "%#{search}%"])
+  # end
 
 
 end
