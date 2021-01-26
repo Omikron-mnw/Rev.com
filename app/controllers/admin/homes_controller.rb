@@ -4,4 +4,8 @@ class Admin::HomesController < ApplicationController
   def top
   end
 
+  def search
+    @comics = Comic.search(params[:search])
+  end
+
 end

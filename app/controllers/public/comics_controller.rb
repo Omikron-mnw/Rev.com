@@ -3,7 +3,6 @@ class Public::ComicsController < ApplicationController
   def index
     @categories = Category.all
     @comics = Comic.all
-    @user = User.find(params[:id])
   end
 
   def show
@@ -15,6 +14,6 @@ class Public::ComicsController < ApplicationController
     @user = User.find_by(id: params[:id], name: params[:name])
   end
 
-  
+
 
 end

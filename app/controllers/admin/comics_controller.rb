@@ -62,6 +62,7 @@ class Admin::ComicsController < ApplicationController
     redirect_to admin_comics_path, notice: "削除しました"
   end
 
+
   private
   def comic_params
     params.require(:comic).permit(

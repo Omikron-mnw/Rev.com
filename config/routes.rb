@@ -16,11 +16,12 @@ Rails.application.routes.draw do
   namespace :admin do
     #TopページをHomeに変更
     get '/' => 'homes#top'
+    get "search/homes" => "homes#search", as: 'homes_search'
 
     get "comics/:isbn" => "comics#show", as: 'comic'
     get "comics/:isbn/edit" => "comics#edit", as: 'comic_edit'
     patch "comics/:isbn" => "comics#update", as: 'comic_update'
-    delete "comics/:isbn/destroy" => "comics#destroy", as: 'comic_destroy'
+    delete "comics/:isbn" => "comics#destroy", as: 'comic_destroy'
     get "search/comics" => "comics#search", as: 'comics_search'
     resources :comics, only: [:index, :create]
 
@@ -39,6 +40,7 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :create, :destroy]
     get "users/:id/unsubscribe" => "users#unsubscribe", as: 'user_unsubscribe'
     patch "users/:id/withdraw" => "users#withdraw", as: 'user_withdraw'
+    get "search" => "users#search", as: 'user_search'
     #フォロー機能
     resources :relationships, only: [:create, :destroy]
     get "relationships/follows" => "relationships#follow", as: 'relationships_follows'

@@ -19,21 +19,21 @@
           <ul class="head-path-box">
             <li class="nav-item">
               <%= link_to homes_about_path do %>
-                <p class="user-head-path">About</p>
+                <p class="user-head-path">Rev.comとは？</p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to user_path(current_user) do %>
                 <p class="user-img-path">
-                  Mypage
-                  <!--%= attachment_image_tag @user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>-->
-                  <!--%= @user.name %>-->
+                  <!--Mypage-->
+                  <%= attachment_image_tag current_user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
+                  <%= current_user.name %>
                 </p>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <p class="user-head-path">Logout</p>
+                <p class="user-head-path">ログアウト</p>
               <% end %>
             </li>
           </ul>
@@ -82,7 +82,7 @@
           <ul class="head-path-box">
             <li class="nav-item">
               <%= link_to homes_about_path do %>
-                <p class="default-head-path">About</p>
+                <p class="default-head-path">Rev.comとは？</p>
               <% end %>
             </li>
             <li class="nav-item">
@@ -92,7 +92,7 @@
             </li>
             <li class="nav-item">
               <%= link_to new_user_session_path do %>
-               <p class="default-head-path">LOGIN</p>
+               <p class="default-head-path">ログイン</p>
               <% end %>
             </li>
           </ul>
@@ -105,4 +105,14 @@
     </div>
 
   </nav>
+
 </header>
+<div class="row p-0 m-0">
+  <div class="head-search col-lg-12 p-0 m-0">
+    <% if admin_signed_in? %>
+      <%= render 'admin/homes/search_form' %>
+    <% else %>
+      <%= render 'public/users/search_form' %>
+    <% end %>
+  </div>
+</div>

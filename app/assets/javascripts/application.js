@@ -20,24 +20,21 @@
 /* global $document */
 $(document).on('turbolinks:load', function() {
   /* global $ */
-  $('#slider2').slick({
-    slidesToShow: 3,
-    slidesToScroll: 3,
+  $('#slider').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
     autoplay: true,
     dots: true,
   });
-  // $('#slider2').slick({
-  //     autoplay: true,
-  //     autoplaySpeed: 1000,
-  //     slidesToShow: 3,
-  //     slidesToScroll: 3,
-  //     infinite: true,
-  //     responsive: [{
-  //       breakpoint: 768,
-  //       settings: {
-  //         slidesToShow: 2,
-  //         slidesToScroll: 2,
-  //       }
-  //     }]
-  // });
+});
+
+/* global $document */
+$(document).on('turbolinks:load', function() {
+  /* global $ */
+  $('#review-slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    dots: true,
+  });
 });

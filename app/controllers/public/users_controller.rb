@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, except: [:index, :show, :search]
 
   def index
     @users = User.all
@@ -37,7 +38,25 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def search
+    @user_or_comic = params[:option]
+    @how_search = params[:choice]
+    if @user_or_comic == "1"
+      @users = User.search(params[:search], @user_or_comic, @how_search)
+    else
+      @comics = Comic.search(params[:search], @user_or_comic, @how_search)
+    end
+  end
+
   private
+
+  def ensure_correct_user
+    @user = User.find_by(id: params[:id])
+    if @user.id != current_user.id
+      redirect_to user_path(current_user.id)
+    end
+  end
+
   def user_params
     params.require(:user).permit(:name, :email, :profile_image, :introduction, :is_deleted)
   end
