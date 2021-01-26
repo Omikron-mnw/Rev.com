@@ -185,6 +185,10 @@ body {
     text-align: center;
 }
 
+.about-top-img {
+    width: 100%;
+}
+
 .about-main-visual {
     text-align: center;
     margin: 20px 0;
@@ -203,10 +207,13 @@ body {
     font-size: 20px;
 }
 
-.about-list {
+.about-list, {
     text-align: center;
     padding: 0 0 30px 80px;
     margin: 20px 0;
+}
+
+#about-border {
     border-bottom: 1px solid #bbb;
 }
 
