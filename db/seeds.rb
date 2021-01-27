@@ -8,5 +8,5 @@
 
 Admin.create!(
   email: 'review@comic.com',
-  password: 'reviewcomic'
+  password: 'qazxsw'
 )
