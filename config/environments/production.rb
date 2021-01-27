@@ -93,6 +93,3 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 end
 
-  # Precompile additional assets.
-  # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( bx_loader.gif controls.png )
