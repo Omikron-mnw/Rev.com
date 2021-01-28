@@ -5,6 +5,7 @@
     </div>
 
       <!-- コミック編集フォーム -->
+  <%= form_with model: @comic, url: admin_comic_update_path(@comic.isbn), method: :patch, local: true do |f| %>
     <div class="col-lg-6">
       <table class="table">
           <thead>
@@ -13,7 +14,6 @@
               <th>コミック情報編集</th>
             </tr>
           </thead>
-        <%= form_with model: @comic, url: admin_comic_update_path(@comic.isbn), method: :patch, local: true do |f| %>
           <tbody>
             <tr>
               <td><%= f.label "タイトル" %></td>
@@ -42,8 +42,8 @@
               <td><%= f.submit "更新する", class: "btn btn-outline-secondary btn-lg" %></td>
             </tr>
           </tfoot>
-        <% end %>
       </table>
     </div>
+  <% end %>
   </div>
 </div>

@@ -1,10 +1,11 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, except: [:index, :show, :search]
+  before_action :forbid_test_user, only: [:edit, :update, :unsubscribe, :withdraw]
 
-  def index
-    @users = User.all
-  end
+  # def index
+  #   @users = User.all
+  # end
 
   def show
     @user = User.find(params[:id])
@@ -49,6 +50,14 @@ class Public::UsersController < ApplicationController
   end
 
   private
+
+  def forbid_test_user
+      if @user.email == "test@example.com"
+        flash[:notice] = "テストユーザーのため変更できません"
+        redirect_to root_path
+      end
+  end
+
 
   def ensure_correct_user
     @user = User.find_by(id: params[:id])
