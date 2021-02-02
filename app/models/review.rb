@@ -1,7 +1,6 @@
 class Review < ApplicationRecord
-
   belongs_to :user
-  belongs_to :comic, primary_key: "isbn"
+  belongs_to :comic, primary_key: 'isbn'
   has_many :comments, dependent: :destroy
 
   # いいね機能
@@ -19,5 +18,4 @@ class Review < ApplicationRecord
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1
   }, presence: true
-
 end
