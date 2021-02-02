@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :set_user,except: [:follow, :follower]
+  before_action :set_user, except: %i[follow follower]
 
   def follow
     @user = User.find(params[:id])
@@ -14,11 +14,11 @@ class Public::RelationshipsController < ApplicationController
   def create
     following = current_user.follow(@user)
     if following.save
-      flash[:notice] = "フォローしました"
+      flash[:notice] = 'フォローしました'
       # redirect_back(fallback_location: root_path)
       render :create
     else
-      flash.now[:notice] = "フォローに失敗しました"
+      flash.now[:notice] = 'フォローに失敗しました'
       # redirect_back(fallback_location: root_path)
     end
   end
@@ -36,8 +36,8 @@ class Public::RelationshipsController < ApplicationController
   end
 
   private
+
   def set_user
     @user = User.find_by(id: params[:follow_id])
   end
-
 end

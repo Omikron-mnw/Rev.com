@@ -1,7 +1,6 @@
 class Public::TagsController < ApplicationController
   before_action :authenticate_user!, except: [:search]
 
-
   def create
     @comic = Comic.find_by(isbn: params[:comic_id])
     @tag = current_user.tags.new(tag_params)
@@ -19,7 +18,7 @@ class Public::TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @comic = Comic.find_by(isbn: params[:comic_id])
     if @tag.destroy
-      [:flash[:notice] = ""]
+      [:flash[:notice] = '']
       redirect_to comic_path(isbn: @comic.isbn)
     end
   end
@@ -27,7 +26,7 @@ class Public::TagsController < ApplicationController
   def search
     @categories = Category.all
     @tag = Tag.find_by(tag_name: params[:tag_name])
-    @comics = Comic.joins(:tags).where(tags: { tag_name: "#{@tag.tag_name}" })
+    @comics = Comic.joins(:tags).where(tags: { tag_name: @tag.tag_name.to_s })
     # @search_params = tag_name_params
     # @comics = Comic.search(@search_params).include(:tag_name)
   end
@@ -37,8 +36,8 @@ class Public::TagsController < ApplicationController
   # end
 
   private
+
   def tag_params
     params.require(:tag).permit(:comic_id, :user_id, :tag_name)
   end
-
 end

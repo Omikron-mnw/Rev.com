@@ -1,5 +1,4 @@
 class Public::ComicsController < ApplicationController
-
   def index
     @categories = Category.all
     @comics = Comic.all
@@ -13,7 +12,4 @@ class Public::ComicsController < ApplicationController
     @tags = @comic.tags
     @user = User.find_by(id: params[:id], name: params[:name])
   end
-
-
-
 end
