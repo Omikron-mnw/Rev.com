@@ -1,7 +1,7 @@
     <!--レビュー一覧-->
     <% if @reviews.present? %>
       <% @reviews.each do |review| %>
-        <div class="row reviews">
+        <div class="row reviews" data-turbolinks="false">
           <div class="col-md-2 reviews-user">
             <%= link_to review.user do %>
               <%= attachment_image_tag @user, :profile_image ,width: '100px' %>
