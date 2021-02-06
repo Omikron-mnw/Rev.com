@@ -37,7 +37,7 @@
 ## 使用素材
 
 背景画像 : https://www.stockio.com/free-vector/abstract-geometric-background<br />
-イラスト画像 : https://undraw.co/illustrations
+イラスト画像 : https://undraw.co/illustrations<br />
 コミック画像 : Rakuten API
 
 ## Topページ
