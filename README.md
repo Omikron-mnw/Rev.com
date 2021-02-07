@@ -34,6 +34,9 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## デプロイ
+- AWS : EC2
+
 ## 使用素材
 
 背景画像 : https://www.stockio.com/free-vector/abstract-geometric-background<br />
