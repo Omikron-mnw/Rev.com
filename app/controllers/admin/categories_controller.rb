@@ -10,7 +10,7 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.all
     @category = Category.new(category_params)
     if @category.save
-      flash[:notice] = "カテゴリーを追加しました"
+      flash[:notice] = 'カテゴリーを追加しました'
       redirect_back(fallback_location: root_path)
     else
       render :index
@@ -22,22 +22,22 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-     @category = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def update
-     @category = Category.find(params[:id])
-     if @category.update(category_params)
-       flash[:notice] = "カテゴリーを変更しました"
-       redirect_to admin_categories_path(@category.id)
-     else
-       render :edit
-     end
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      flash[:notice] = 'カテゴリーを変更しました'
+      redirect_to admin_categories_path(@category.id)
+    else
+      render :edit
+    end
   end
 
   private
+
   def category_params
     params.require(:category).permit(:name)
   end
-
 end

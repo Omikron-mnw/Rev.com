@@ -11,7 +11,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
-      redirect_to comic_path(@review.comic.isbn), notice: "レビューを追加しました"
+      redirect_to comic_path(@review.comic.isbn), notice: 'レビューを追加しました'
     else
       @comic = Comic.find_by(isbn: params[:comic_id])
       render :new
@@ -38,7 +38,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      redirect_to comic_review_path(@review.id), notice: "更新しました"
+      redirect_to comic_review_path(@review.id), notice: '更新しました'
     else
       @categories = Category.all
       render :edit
@@ -50,7 +50,7 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @comic = Comic.find_by(isbn: params[:comic_id])
     @review.destroy
-    redirect_to comic_path(@comic.isbn), notice: "レビューを削除しました"
+    redirect_to comic_path(@comic.isbn), notice: 'レビューを削除しました'
   end
 
   private
@@ -58,5 +58,4 @@ class Public::ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:comic_id, :user_id, :review, :rate)
   end
-
 end

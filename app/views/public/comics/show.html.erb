@@ -58,23 +58,10 @@
       </div>
     </div>
 
-    <div class="review-box col-lg-8">
+    <div class="review-box col-lg-8" data-turbolinks="false">
       <div class="rate-avg-box">
         <!--レビュー平均-->
-        <p class="star-rating-front" style="width: <%= @comic.review_rate_percentage %>"></p>
-        <div id="avg_rate-<%= @comic.isbn %>"></div>
-
-          <script>
-              $('#avg_rate-<%= @comic.isbn %>').raty({
-                size:     36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn :  '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half:     true,
-                readOnly: true,
-                score:    <%= @comic.avg_rate.to_f.round(1) %>
-              });
-          </script>
+        <%= render 'public/comics/avg_star', comic: @comic %>
 
         <p><%= @comic.avg_rate %>点（<%= @comic.reviews.count %>件のレビュー）</p>
       </div>
@@ -104,30 +91,7 @@
                 <h4 class="mb-3">評価：<%= review.rate %>点</h4>
 
                 <!--星評価-->
-                <div id="star-rate-<%= review.id %>"></div>
-                  <script>
-                    $('#star-rate-<%= review.id %>').raty({
-                      size:     36,
-                      starOff:  '<%= asset_path('star-off.png') %>',
-                      starOn :  '<%= asset_path('star-on.png') %>',
-                      starHalf: '<%= asset_path('star-half.png') %>',
-                      half:     true,
-                      readOnly: true,
-                      score:    <%= review.rate %>,
-                    });
-                  </script>
-                <!--/星評価-->
-
-                <!--レビュー内容-->
-                <p>
-                  <%= link_to comic_review_path(@comic, review) do %>
-                    <p class="review-body-path"><%= review.review %></p>
-                  <% end %>
-                </p>
-                <!--コメント数-->
-                <p>
-                  <i class="far fa-comment-alt"><%= review.comments.count %></i>
-                </p>
+                <%= render 'public/reviews/rev_star', review: review %>
 
 
               </div>

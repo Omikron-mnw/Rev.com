@@ -1,9 +1,8 @@
 class Public::HomesController < ApplicationController
-
   def top
     @categories = Category.all
-    @random = Comic.order("RANDOM()").limit(15)
-    @revdom = Review.order("RANDOM()").limit(5)
+    @random = Comic.order('RANDOM()').limit(15)
+    @revdom = Review.order('RANDOM()').limit(5)
   end
 
   def about
@@ -16,5 +15,4 @@ class Public::HomesController < ApplicationController
     @comics = @category.comics
     @comic = Comic.find_by(isbn: params[:isbn])
   end
-
 end
