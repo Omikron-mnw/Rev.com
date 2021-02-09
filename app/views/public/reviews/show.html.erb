@@ -19,27 +19,7 @@
         <h4 class="mb-3">評価：<%= @review.rate %>点</h4>
 
         <!--星評価-->
-         <div id="star-rate-<%= @review.id %>"></div>
-          <script>
-            $('#star-rate-<%= @review.id %>').raty({
-              size:     36,
-              starOff:  '<%= asset_path('star-off.png') %>',
-              starOn :  '<%= asset_path('star-on.png') %>',
-              starHalf: '<%= asset_path('star-half.png') %>',
-              half:     true,
-              readOnly: true,
-              score:    <%= @review.rate %>,
-            });
-          </script>
-        <!--/星評価-->
-
-        <!--レビュー内容-->
-        <p class="rev-body"><%= @review.review %></p>
-
-        <!--いいね機能-->
-        <div>
-          <%= render 'public/likes/like_button', review: @review %>
-        </div>
+        <%= render 'public/reviews/rev_star', review: @review %>
 
       </div>
     </div>
