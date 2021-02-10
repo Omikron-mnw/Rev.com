@@ -22,7 +22,7 @@
 そんな目的で利用して欲しい。
 
 ## 設計書
-詳細 https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 
+ https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 
 
 ## 機能一覧
  https://docs.google.com/spreadsheets/d/1rVqh-CDejYxCQ9ndUk9S2Rg2_aUEGbcUm3HGKrd0Tkk/edit#gid=968201408 
