@@ -22,7 +22,8 @@
 そんな目的で利用して欲しいです。
 
 ## 設計書
- https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 
+ https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 <br />
+ *製作中に一部改変。
 
 ## 機能一覧
  https://docs.google.com/spreadsheets/d/1rVqh-CDejYxCQ9ndUk9S2Rg2_aUEGbcUm3HGKrd0Tkk/edit#gid=968201408 
