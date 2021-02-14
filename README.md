@@ -36,7 +36,7 @@
 - IDE：Cloud9
 
 ## デプロイ
-- AWS : EC2
+- AWS : EC2, RDS, Route53
 
 ## 使用素材
 
