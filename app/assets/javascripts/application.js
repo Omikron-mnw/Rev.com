@@ -49,3 +49,11 @@ $(document).on('turbolinks:load', function() {
 	  nextArrow:'<div class="next"><i class="fas fa-caret-square-right"></i></div>',
   });
 });
+
+/*ハンバーガーメニュー*/
+$(function() {
+　$('.Toggle').click(function() {
+   $(this).toggleClass('active');
+  $('.menu').toggleClass('open');
+ });
+});

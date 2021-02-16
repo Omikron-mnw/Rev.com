@@ -14,7 +14,7 @@
  *= require_self
  */
 
-// Bootstrapを読み込ませるための3行
+/*Bootstrapを読み込ませるための3行*/
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
@@ -31,7 +31,7 @@
 body {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%); //グラデーション
+  background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%); /*グラデーション*/
 }
 
 .notification:not(:last-child){
@@ -68,7 +68,7 @@ footer {
   text-align: center;
   position: fixed;
   border-radius: 40px 40px 0 0;
-  position: absolute; //下に位置固定
+  position: absolute; /*下に位置固定*/
   // bottom: 0;
   margin-top: auto;
 }
@@ -165,4 +165,98 @@ footer {
   font-size: 18px;
 }
 
+@media screen and (max-width: 425px) {
 
+  nav {
+   width: 100%;
+   height: 100px;
+   position: relative;
+  }
+
+  .drawer {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     position: relative;
+     height: 70px;
+     padding: 0 1em;
+  }
+
+  .menu ul li p {
+    display:block;
+    font-weight:bold;
+    padding: 2em;
+    border-bottom: 1px dotted #CCC;
+    color:#333;
+    text-decoration:none;
+  }
+
+  .menu ul li p:hover {
+    background-color:rgba(0,0,0,0.5);
+    color:orange;
+  }
+
+  .menu {
+
+    text-align:center;
+    background-color:rgba(255,255,255,0.5);
+    transition: 0.5s ease;/*滑らかに表示*/
+    -webkit-transform: translateX(100%);/*画面より100%外へ押し出し非表示にさせる*/
+  }
+
+  /*OPEN時*/
+  .menu.open {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);/*メニューを元の位置へ戻す*/
+  }
+
+  .Toggle {
+    display: block;
+    position: fixed;   /*bodyに対しての絶対位置指定*/
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    z-index: 3;
+    right:15px;
+  }
+
+  .Toggle span {
+    display: block;
+    position: absolute;
+    width: 50px;
+    border-bottom: solid 4px #333;
+    -webkit-transition: .35s ease-in-out;	/*変化の速度を指定*/
+    -moz-transition: .35s ease-in-out;		/*変化の速度を指定*/
+    transition: .35s ease-in-out;			/*変化の速度を指定*/
+  }
+
+   /*各ボーダー少しずつずらす*/
+  .Toggle span:nth-child(1) {
+      top:5px;
+  }
+
+   .Toggle span:nth-child(2) {
+      top: 18px;
+  }
+
+   .Toggle span:nth-child(3) {
+      top: 32px;
+  }
+
+  .Toggle.active span:nth-child(1) {
+      top: 18px;
+  /*1番目のspanをマイナス45度に*/
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  }
+
+  /*2番目と3番目のspanを45度に*/
+  .Toggle.active span:nth-child(2), .Toggle.active span:nth-child(3) {
+      top: 18px;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+}

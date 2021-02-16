@@ -10,12 +10,17 @@
 
         <!-- userがログイン時-->
         <% if user_signed_in? %>
-        <p>
+        <p class="drawer">
           <%= link_to root_path do %>
             <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
+          <div class="Toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </p>
-        <div class="collapse navbar-collapse justify-content-end ">
+        <div class="collapse navbar-collapse justify-content-end menu">
           <ul class="head-path-box">
             <li class="nav-item">
               <%= link_to homes_about_path do %>
@@ -41,12 +46,17 @@
 
         <!-- 管理人がログイン時 -->
         <% elsif admin_signed_in? %>
-        <p>
+        <p class="drawer">
           <%= link_to admin_path do %>
             <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
+          <div class="Toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </p>
-        <div class="collapse navbar-collapse justify-content-end ">
+        <div class="collapse navbar-collapse justify-content-end menu">
           <ul class="head-path-box">
             <li class="nav-item">
               <%= link_to admin_comics_search_path do %>
@@ -73,12 +83,17 @@
 
         <!-- どちらもログインしていない時 -->
         <% else %>
-        <p>
+        <p class="drawer">
           <%= link_to root_path do %>
             <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
+          <div class="Toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </p>
-        <div class="collapse navbar-collapse justify-content-end ">
+        <div class="collapse navbar-collapse justify-content-end menu">
           <ul class="head-path-box">
             <li class="nav-item">
               <%= link_to homes_about_path do %>
