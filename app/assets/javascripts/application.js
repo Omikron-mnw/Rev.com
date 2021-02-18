@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require activestorage
 
-//コミック
+/*コミック*/
 /* global $document */
 $(document).on('turbolinks:load', function() {
   /* global $ */
@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function() {
   });
 });
 
-//レビュー
+/*レビュー*/
 /* global $document */
 $(document).on('turbolinks:load', function() {
   /* global $ */
@@ -52,8 +52,9 @@ $(document).on('turbolinks:load', function() {
 
 /*ハンバーガーメニュー*/
 $(function() {
-　$('.Toggle').click(function() {
-   $(this).toggleClass('active');
-  $('.menu').toggleClass('open');
- });
+  $('.menu-trigger').on('click', function(event) {
+    $(this).toggleClass('active');
+    $('#sp-menu').fadeToggle();
+    event.preventDefault();
+  });
 });

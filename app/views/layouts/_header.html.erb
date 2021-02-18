@@ -14,32 +14,34 @@
           <%= link_to root_path do %>
             <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
-          <div class="Toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div id="hm-icon">
+            <a class="menu-trigger" href="#">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
           </div>
         </p>
-        <div class="collapse navbar-collapse justify-content-end menu">
+        <div class="collapse navbar-collapse justify-content-end menu" id="sp-menu">
           <ul class="head-path-box">
             <li class="nav-item">
-              <%= link_to homes_about_path do %>
-                <p class="user-head-path">Rev.comとは？</p>
-              <% end %>
+                <%= link_to homes_about_path do %>
+                  <p class="user-head-path">Rev.comとは？</p>
+                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to user_path(current_user) do %>
-                <p class="user-img-path">
-                  <!--Mypage-->
-                  <%= attachment_image_tag current_user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
-                  <%= current_user.name %>
-                </p>
-              <% end %>
+                <%= link_to user_path(current_user) do %>
+                  <p class="user-img-path">
+                    <!--Mypage-->
+                    <%= attachment_image_tag current_user, :profile_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg", class: "rounded-circle" %>
+                    <%= current_user.name %>
+                  </p>
+                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <p class="user-head-path">ログアウト</p>
-              <% end %>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <p class="user-head-path">ログアウト</p>
+                <% end %>
             </li>
           </ul>
         </div>
@@ -50,33 +52,35 @@
           <%= link_to admin_path do %>
             <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
-          <div class="Toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div id="hm-icon">
+            <a class="menu-trigger" href="#">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
           </div>
         </p>
-        <div class="collapse navbar-collapse justify-content-end menu">
+        <div class="collapse navbar-collapse justify-content-end" id="sp-menu">
           <ul class="head-path-box">
             <li class="nav-item">
-              <%= link_to admin_comics_search_path do %>
-                <p class="admin-head-path">コミック新規登録</p>
-              <% end %>
+                <%= link_to admin_comics_search_path do %>
+                  <p class="admin-head-path">コミック新規登録</p>
+                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admin_comics_path do %>
-                <p class="admin-head-path">コミック一覧</p>
-              <% end %>
+                <%= link_to admin_comics_path do %>
+                  <p class="admin-head-path">コミック一覧</p>
+                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admin_categories_path do %>
-                <p class="admin-head-path">カテゴリー登録/一覧</p>
-              <% end %>
+                <%= link_to admin_categories_path do %>
+                  <p class="admin-head-path">カテゴリー登録/一覧</p>
+                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to destroy_admin_session_path, method: :delete do %>
-                <p class="admin-head-path">ログアウト</p>
-              <% end %>
+                <%= link_to destroy_admin_session_path, method: :delete do %>
+                  <p class="admin-head-path">ログアウト</p>
+                <% end %>
             </li>
           </ul>
         </div>
@@ -87,28 +91,30 @@
           <%= link_to root_path do %>
             <p class="head-logo"><%= image_tag 'Rev.com-logo-2.png', :size => "100x100" %></p>
           <% end %>
-          <div class="Toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+          <div id="hm-icon">
+            <a class="menu-trigger" href="#">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
           </div>
         </p>
-        <div class="collapse navbar-collapse justify-content-end menu">
+        <div class="collapse navbar-collapse justify-content-end" id="sp-menu">
           <ul class="head-path-box">
             <li class="nav-item">
-              <%= link_to homes_about_path do %>
-                <p class="default-head-path">Rev.comとは？</p>
-              <% end %>
+                <%= link_to homes_about_path do %>
+                  <p class="default-head-path">Rev.comとは？</p>
+                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to new_user_registration_path do %>
-                <p class="default-head-path">新規登録</p>
-              <% end %>
+                <%= link_to new_user_registration_path do %>
+                  <p class="default-head-path">新規登録</p>
+                <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to new_user_session_path do %>
-               <p class="default-head-path">ログイン</p>
-              <% end %>
+                <%= link_to new_user_session_path do %>
+                  <p class="default-head-path">ログイン</p>
+                <% end %>
             </li>
           </ul>
         </div>
