@@ -14,12 +14,12 @@
         <p class="date"><%= review.created_at.strftime('%Y/%m/%d') %></p>
       </div>
       <div class="comic-info">
-        <%= link_to comic_path(review.comic) do %>
-          <div class="reviews-comic">
+        <div class="reviews-comic">
+          <%= link_to comic_path(review.comic) do %>
             <p><%= image_tag review.comic.image_url, :size => "66x90" %></p>
             <h6 class="review-comic-title"><%= review.comic.title %></h6>
-          </div>
-        <%end %>
+          <%end %>
+        </div>
       </div>
       <div class="review-info">
         <div class="reviews-content">
