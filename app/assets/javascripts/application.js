@@ -38,12 +38,12 @@ $(document).on('turbolinks:load', function() {
 $(document).on('turbolinks:load', function() {
   /* global $ */
   $('#review-slider').slick({
-    slidesToShow: 1,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
     dots: true,
     adaptiveHeight: false,
-    speed: 1200,
+    speed: 1800,
     pauseOnHover: true,
     prevArrow:'<div class="prev"><i class="fas fa-caret-square-left"></i></div>',
 	  nextArrow:'<div class="next"><i class="fas fa-caret-square-right"></i></div>',
