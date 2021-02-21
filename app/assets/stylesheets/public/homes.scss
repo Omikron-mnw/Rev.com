@@ -130,14 +130,25 @@ body {
     margin: 0;
 }
 
-.comic-info {
-    width: 200px;
+.review-comic-title {
+    width: 100px;
+    position: relative;
+    bottom: 150px;
+    left: 430px;
+    // display: block;
+    // margin: 0 0 0 500px;
+}
+
+.review-comic-img {
+    width: 70px;
     position: relative;
     bottom: 150px;
     left: 450px;
     // display: block;
     // margin: 0 0 0 500px;
 }
+
+
 
 .review-info {
     width: 300px;
@@ -170,7 +181,8 @@ body {
 
 .top-comic-link {
     text-align: center;
-    margin: 200px 0 0 0;
+    padding-right: 100px;
+    // margin: 200px 0 0 0;
 }
 
 .top-comic-path {
