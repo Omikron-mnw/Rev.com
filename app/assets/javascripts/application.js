@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {
   $('#review-slider').slick({
     slidesToShow: 2,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     dots: true,
     adaptiveHeight: false,
     speed: 1800,
