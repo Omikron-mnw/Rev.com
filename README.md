@@ -22,7 +22,9 @@
 そんな目的で利用して欲しいです。
 
 ## 設計書
- https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 <br />
+ER図　 <br />
+テーブル設計　https://docs.google.com/spreadsheets/d/1zJ5Oq-EE7kpSfUCersjgKRKeqzr5XpT62weRcP6O2B8/edit#gid=854641333 <br />
+詳細設計 　https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 <br />
  * 製作中にテーブル設計を一部改変。
 
 ## 機能一覧
