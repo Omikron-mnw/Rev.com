@@ -25,7 +25,7 @@
 ER図　https://user-images.githubusercontent.com/73174207/109391730-f091bd80-795b-11eb-9236-6c8ca306cea9.png <br />
 テーブル設計　https://docs.google.com/spreadsheets/d/1zJ5Oq-EE7kpSfUCersjgKRKeqzr5XpT62weRcP6O2B8/edit#gid=854641333 <br />
 詳細設計 　https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 <br />
- * 製作中にテーブル設計を一部改変。
+ *製作中にテーブル設計を一部改変。
 
 ## 機能一覧
  https://docs.google.com/spreadsheets/d/1rVqh-CDejYxCQ9ndUk9S2Rg2_aUEGbcUm3HGKrd0Tkk/edit#gid=968201408 
