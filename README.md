@@ -44,7 +44,7 @@ ER図　https://user-images.githubusercontent.com/73174207/109391730-f091bd80-79
 
 背景画像 : https://www.stockio.com/free-vector/abstract-geometric-background<br />
 イラスト画像 : https://undraw.co/illustrations<br />
-コミック画像 : Rakuten API
+コミック画像 : Rakuten API　( 楽天ブックス使用 )
 
 ## Topページ
 <img width="2048" alt="スクリーンショット 2021-01-27 7 16 19" src="https://user-images.githubusercontent.com/73174207/106258625-6b828e00-6261-11eb-9bef-8dbbb1d6c45d.png">
