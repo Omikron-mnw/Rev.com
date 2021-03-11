@@ -22,8 +22,10 @@
 そんな目的で利用して欲しいです。
 
 ## 設計書
- https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 <br />
- * 製作中に一部改変。
+ER図　https://user-images.githubusercontent.com/73174207/109391730-f091bd80-795b-11eb-9236-6c8ca306cea9.png <br />
+テーブル設計　https://docs.google.com/spreadsheets/d/1zJ5Oq-EE7kpSfUCersjgKRKeqzr5XpT62weRcP6O2B8/edit#gid=854641333 <br />
+詳細設計 　https://docs.google.com/spreadsheets/d/1CGMksp1-HpI_VAHrL55liYAQn0XXwarNqTTvuw68GUg/edit#gid=0 <br />
+ *製作中にテーブル設計を一部改変。
 
 ## 機能一覧
  https://docs.google.com/spreadsheets/d/1rVqh-CDejYxCQ9ndUk9S2Rg2_aUEGbcUm3HGKrd0Tkk/edit#gid=968201408 
@@ -42,7 +44,7 @@
 
 背景画像 : https://www.stockio.com/free-vector/abstract-geometric-background<br />
 イラスト画像 : https://undraw.co/illustrations<br />
-コミック画像 : Rakuten API
+コミック画像 : Rakuten API　( 楽天ブックス使用 )
 
 ## Topページ
 <img width="2048" alt="スクリーンショット 2021-01-27 7 16 19" src="https://user-images.githubusercontent.com/73174207/106258625-6b828e00-6261-11eb-9bef-8dbbb1d6c45d.png">
