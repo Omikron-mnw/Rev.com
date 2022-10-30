@@ -40,8 +40,8 @@ ER図　https://user-images.githubusercontent.com/73174207/109391730-f091bd80-79
 - IDE：Cloud9
 
 ## デプロイ
-#- AWS : EC2, RDS, Route53
--現在はHerokuにて公開。
+- AWS : EC2, RDS, Route53
+- 現在はHerokuにて公開。
 
 ## 使用素材
 
