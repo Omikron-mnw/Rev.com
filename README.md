@@ -1,5 +1,6 @@
 # Rev.com
 ![Rev  com-logo-2](https://user-images.githubusercontent.com/73174207/105358506-981f2000-5c39-11eb-8c66-f21406bff1f7.png) <br />
+＊現在使用不可<br />
 http://rev-com.work <br />
 管理者画面にはurlにadmins/sign_inを追加し、ゲストログインをご利用ください。
 
@@ -41,7 +42,6 @@ ER図　https://user-images.githubusercontent.com/73174207/109391730-f091bd80-79
 
 ## デプロイ
 - AWS : EC2, RDS, Route53
-- 現在はHerokuにて公開。
 
 ## 使用素材
 
